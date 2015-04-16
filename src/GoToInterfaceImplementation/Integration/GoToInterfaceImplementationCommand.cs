@@ -31,7 +31,10 @@ namespace GoToInterfaceImplementation.Integration
                 return;
             }
 
-            CommandID commandId = new CommandID(Identifiers.GoToInterfaceImplementationCmdSet, (int)Identifiers.GoToInterfaceImplementationCmd);
+            CommandID commandId = new CommandID(
+                Identifiers.GoToInterfaceImplementationCommandSet, 
+                (int)Identifiers.GoToInterfaceImplementationCommand);
+
             MenuCommand menuItem = new MenuCommand((sender, e) => Execute(), commandId);
             menuCommandService.AddCommand(menuItem);
         }
