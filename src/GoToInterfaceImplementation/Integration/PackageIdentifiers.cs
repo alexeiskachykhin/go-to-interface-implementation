@@ -2,7 +2,7 @@
 
 namespace GoToInterfaceImplementation.Integration
 {
-    public static class Identifiers
+    public static class PackageIdentifiers
     {
         public const string GoToInterfaceImplementationPackageString = "5525ea2c-572b-4742-975b-8ba3262b48dc";
 

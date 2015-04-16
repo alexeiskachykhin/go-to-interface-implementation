@@ -15,12 +15,12 @@ namespace GoToInterfaceImplementation.Integration
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(Identifiers.GoToInterfaceImplementationPackageString)]
+    [Guid(PackageIdentifiers.GoToInterfaceImplementationPackageString)]
     public sealed class GoToInterfaceImplementationPackage : Package
     {
         public GoToInterfaceImplementationPackage()
         {
-            Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
+            PackageServiceLocator.Current = new PackageServiceLocator(GetService);
         }
 
 
@@ -29,7 +29,7 @@ namespace GoToInterfaceImplementation.Integration
             Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             base.Initialize();
 
-            var goToImplementationCommand = new GoToInterfaceImplementationCommand(GetService);
+            var goToImplementationCommand = new GoToInterfaceImplementationCommand();
             goToImplementationCommand.Register();
         }
     }

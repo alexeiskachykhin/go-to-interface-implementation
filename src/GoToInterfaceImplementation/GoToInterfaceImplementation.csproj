@@ -124,9 +124,23 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Contracts\IAlgorithm.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteCodeEditor.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteClass.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteFactory.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterface.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationFinder.cs" />
+    <Compile Include="Domain\Factory.cs" />
+    <Compile Include="Domain\GoToInterfaceImplementationAlgorithm.cs" />
+    <Compile Include="Domain\Contracts\ICodeEditor.cs" />
+    <Compile Include="Domain\Contracts\IInterfaceImplementationFinder.cs" />
+    <Compile Include="Domain\Contracts\IClass.cs" />
+    <Compile Include="Domain\Contracts\IInterface.cs" />
+    <Compile Include="Domain\Contracts\ICodeElement.cs" />
     <Compile Include="Integration\GoToInterfaceImplementationCommand.cs" />
-    <Compile Include="Integration\Identifiers.cs" />
+    <Compile Include="Integration\PackageIdentifiers.cs" />
     <Compile Include="Integration\GoToInterfaceImplementationPackage.cs" />
+    <Compile Include="Integration\PackageServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +170,7 @@
   <ItemGroup>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>

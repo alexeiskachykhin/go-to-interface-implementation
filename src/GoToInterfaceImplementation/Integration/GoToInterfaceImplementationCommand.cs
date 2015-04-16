@@ -6,25 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+
+using GoToInterfaceImplementation.Domain;
 
 namespace GoToInterfaceImplementation.Integration
 {
     public class GoToInterfaceImplementationCommand
     {
-        private readonly Func<Type, object> _serviceLocator;
-
-
-        public GoToInterfaceImplementationCommand(Func<Type, object> serviceLocator)
-        {
-            _serviceLocator = serviceLocator;
-        }
-
-
         public void Register()
         {
-            OleMenuCommandService menuCommandService = _serviceLocator(typeof(IMenuCommandService)) as OleMenuCommandService;
+            OleMenuCommandService menuCommandService = PackageServiceLocator.Current.GetService<IMenuCommandService, OleMenuCommandService>();
 
             if (menuCommandService == null)
             {
@@ -32,8 +26,8 @@ namespace GoToInterfaceImplementation.Integration
             }
 
             CommandID commandId = new CommandID(
-                Identifiers.GoToInterfaceImplementationCommandSet, 
-                (int)Identifiers.GoToInterfaceImplementationCommand);
+                PackageIdentifiers.GoToInterfaceImplementationCommandSet, 
+                (int)PackageIdentifiers.GoToInterfaceImplementationCommand);
 
             MenuCommand menuItem = new MenuCommand((sender, e) => Execute(), commandId);
             menuCommandService.AddCommand(menuItem);
@@ -41,22 +35,8 @@ namespace GoToInterfaceImplementation.Integration
 
         private void Execute()
         {
-            // Show a Message Box to prove we were here
-            IVsUIShell uiShell = (IVsUIShell)_serviceLocator(typeof(SVsUIShell));
-            Guid clsid = Guid.Empty;
-            int result;
-            Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure(uiShell.ShowMessageBox(
-                       0,
-                       ref clsid,
-                       "GoToInterfaceImplementation",
-                       string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.ToString()),
-                       string.Empty,
-                       0,
-                       OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                       OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST,
-                       OLEMSGICON.OLEMSGICON_INFO,
-                       0,        // false
-                       out result));
+            var algorithm = new GoToInterfaceImplementationAlgorithm();
+            algorithm.Execute();
         }
     }
 }
