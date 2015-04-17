@@ -26,7 +26,6 @@ namespace GoToInterfaceImplementation.Integration
 
         protected override void Initialize()
         {
-            Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             base.Initialize();
 
             var goToImplementationCommand = new GoToInterfaceImplementationCommand();
