@@ -22,8 +22,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         {
             IEnumerable<IClass> codeClasses = _codeEditor.GetClassesInSolution();
 
-            IClass derivedCodeClass =
-                codeClasses.FirstOrDefault(c => c.ImplementedInterfaces.Any(b => b.FullName == codeInterface.FullName));
+            IClass derivedCodeClass = codeClasses.FirstOrDefault(
+                c => c.ImplementedInterfaces.Any(
+                    b => b.FullName == codeInterface.FullName));
 
             return derivedCodeClass;
         }
