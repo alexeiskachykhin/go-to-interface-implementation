@@ -23,19 +23,19 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public void RevealInCodeWindow()
+        public void RevealInCodeEditor()
         {
             throw new NotImplementedException();
         }
 
-        public void RevealImplementationInCodeWindow()
+        public void RevealImplementationInCodeEditor(ICodeEditor codeEditor)
         {
-            var finder = new EnvDteInterfaceImplementationFinder();
+            var finder = new EnvDteInterfaceImplementationFinder(codeEditor);
             var derivedCodeClass = finder.Find(this);
 
             if (derivedCodeClass != null)
             {
-                derivedCodeClass.RevealInCodeWindow();
+                derivedCodeClass.RevealInCodeEditor();
             }
         }
     }

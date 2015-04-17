@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using EnvDTE;
-
 using GoToInterfaceImplementation.Integration;
 using GoToInterfaceImplementation.Domain.Contracts;
 
@@ -11,64 +9,23 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 {
     public class EnvDteInterfaceImplementationFinder : IInterfaceImplementationFinder
     {
-        private readonly DTE _dte;
+        private readonly ICodeEditor _codeEditor;
 
 
-        public EnvDteInterfaceImplementationFinder()
+        public EnvDteInterfaceImplementationFinder(ICodeEditor codeEditor)
         {
-            _dte = PackageServiceLocator.Current.GetService<DTE>();
+            _codeEditor = codeEditor;
         }
 
 
         public IClass Find(IInterface codeInterface)
         {
-            IEnumerable<CodeClass> codeClasses = GetClassesInSolution(_dte.Solution);
+            IEnumerable<IClass> codeClasses = _codeEditor.GetClassesInSolution();
 
-            CodeClass derivedCodeClass =
-                codeClasses.FirstOrDefault(c => c.ImplementedInterfaces.Cast<CodeElement>().Any(b => b.FullName == codeInterface.FullName));
+            IClass derivedCodeClass =
+                codeClasses.FirstOrDefault(c => c.ImplementedInterfaces.Any(b => b.FullName == codeInterface.FullName));
 
-            IClass codeElement = (derivedCodeClass != null) ?
-                new EnvDteClass(derivedCodeClass) :
-                null;
-
-            return codeElement;
-        }
-
-
-        private IEnumerable<CodeClass> GetClasses(CodeElements codeElements)
-        {
-            foreach (CodeElement codeElement in codeElements)
-            {
-                if (codeElement.Kind == vsCMElement.vsCMElementClass)
-                {
-                    yield return (CodeClass)codeElement;
-                }
-                else if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
-                {
-                    var namespaceElement = (CodeNamespace)codeElement;
-
-                    foreach (CodeClass codeClass in GetClasses(namespaceElement.Members))
-                    {
-                        yield return codeClass;
-                    }
-                }
-            }
-        }
-
-        private IEnumerable<CodeClass> GetClassesInProject(Project project)
-        {
-            return GetClasses(project.CodeModel.CodeElements);
-        }
-
-        private IEnumerable<CodeClass> GetClassesInSolution(Solution solution)
-        {
-            foreach (Project project in solution.Projects)
-            {
-                foreach (CodeClass codeClass in GetClassesInProject(project))
-                {
-                    yield return codeClass;
-                }
-            }
+            return derivedCodeClass;
         }
     }
 }

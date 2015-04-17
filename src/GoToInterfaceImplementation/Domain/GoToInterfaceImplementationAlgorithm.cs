@@ -14,7 +14,7 @@ namespace GoToInterfaceImplementation.Domain
 
             if (selectedInterface != null)
             {
-                selectedInterface.RevealImplementationInCodeWindow();
+                selectedInterface.RevealImplementationInCodeEditor(codeEditor);
             }
         }
     }

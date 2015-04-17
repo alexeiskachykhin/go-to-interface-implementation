@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using EnvDTE;
 
@@ -16,6 +18,18 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             get { return _codeClass.FullName; }
         }
 
+        public IEnumerable<IInterface> ImplementedInterfaces
+        {
+            get 
+            {
+                IEnumerable<IInterface> implementedInterfaces =
+                    from i in _codeClass.ImplementedInterfaces.OfType<CodeInterface>()
+                    select new EnvDteInterface(i);
+
+                return implementedInterfaces;
+            }
+        }
+
 
         public EnvDteClass(CodeClass codeClass)
         {
@@ -23,7 +37,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public void RevealInCodeWindow()
+        public void RevealInCodeEditor()
         {
             Window window = _codeClass.ProjectItem.Open();
             window.Activate();

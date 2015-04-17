@@ -4,6 +4,6 @@ namespace GoToInterfaceImplementation.Domain.Contracts
 {
     public interface IInterface : ICodeElement
     {
-        void RevealImplementationInCodeWindow();
+        void RevealImplementationInCodeEditor(ICodeEditor codeEditor);
     }
 }

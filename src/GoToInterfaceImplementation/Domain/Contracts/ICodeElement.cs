@@ -7,6 +7,6 @@ namespace GoToInterfaceImplementation.Domain.Contracts
         string FullName { get; }
 
 
-        void RevealInCodeWindow();
+        void RevealInCodeEditor();
     }
 }
