@@ -10,6 +10,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 {
     public class EnvDteClass : IClass
     {
+        private readonly ICodeEditor _codeEditor;
+
         private readonly CodeClass _codeClass;
 
 
@@ -18,21 +20,34 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             get { return _codeClass.FullName; }
         }
 
+        public IEnumerable<IClassMember> Members
+        {
+            get 
+            {
+                IEnumerable<IClassMember> classMembers =
+                    from i in _codeClass.Children.OfType<CodeFunction>()
+                    select new EnvDteClassMember(_codeEditor, i);
+
+                return classMembers;
+            }
+        }
+
         public IEnumerable<IInterface> ImplementedInterfaces
         {
             get 
             {
                 IEnumerable<IInterface> implementedInterfaces =
                     from i in _codeClass.ImplementedInterfaces.OfType<CodeInterface>()
-                    select new EnvDteInterface(i);
+                    select new EnvDteInterface(_codeEditor, i);
 
                 return implementedInterfaces;
             }
         }
 
 
-        public EnvDteClass(CodeClass codeClass)
+        public EnvDteClass(ICodeEditor codeEditor, CodeClass codeClass)
         {
+            _codeEditor = codeEditor;
             _codeClass = codeClass;
         }
 

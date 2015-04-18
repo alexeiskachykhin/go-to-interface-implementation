@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
-    public interface IInterfaceImplementationFinder
+    public interface IClassMember : ICodeElement
     {
-        IEnumerable<IClass> Find(IInterface codeInterface);
+        IEnumerable<IParameter> Parameters { get; }
     }
 }

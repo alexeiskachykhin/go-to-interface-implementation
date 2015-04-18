@@ -9,9 +9,7 @@ namespace GoToInterfaceImplementation.Domain
     {
         public abstract ICodeEditor CreateCodeEditor();
 
-        public abstract IInterfaceImplementationFinder CreateInterfaceImplementationFinder(ICodeEditor codeEditor);
-
-        public abstract IInterfaceImplementationPresenter CreateInterfaceImplementationPresenter(ICodeEditor codeEditor);
+        public abstract IImplementationPresenter CreateImplementationPresenter();
 
 
         private static Factory _current;

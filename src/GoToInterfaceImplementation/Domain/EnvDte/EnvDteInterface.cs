@@ -9,6 +9,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 {
     public class EnvDteInterface : IInterface
     {
+        private readonly ICodeEditor _codeEditor;
+
         private readonly CodeInterface _codeInterface;
 
 
@@ -18,8 +20,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public EnvDteInterface(CodeInterface codeInterface)
+        public EnvDteInterface(ICodeEditor codeEditor, CodeInterface codeInterface)
         {
+            _codeEditor = codeEditor;
             _codeInterface = codeInterface;
         }
 
@@ -29,8 +32,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             throw new NotImplementedException();
         }
 
-        public IEnumerable<IClass> FindImplementations(IInterfaceImplementationFinder finder)
+        public IEnumerable<IClass> FindImplementations()
         {
+            IImplementationFinder<IInterface, IClass> finder = 
+                new EnvDteInterfaceImplementationFinder(_codeEditor);
+
             return finder.Find(this);
         }
     }

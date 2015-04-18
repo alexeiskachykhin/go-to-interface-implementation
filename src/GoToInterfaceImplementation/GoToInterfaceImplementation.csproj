@@ -125,17 +125,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
-    <Compile Include="Domain\Contracts\IInterfaceImplementationPresenter.cs" />
+    <Compile Include="Domain\Contracts\IClassMember.cs" />
+    <Compile Include="Domain\Contracts\IDeclarationOf.cs" />
+    <Compile Include="Domain\Contracts\IInterfaceMember.cs" />
+    <Compile Include="Domain\Contracts\IImplementationPresenter.cs" />
+    <Compile Include="Domain\Contracts\IParameter.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteClassMember.cs" />
     <Compile Include="Domain\EnvDte\EnvDteCodeEditor.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClass.cs" />
     <Compile Include="Domain\EnvDte\EnvDteFactory.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceMemberImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceMember.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterface.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationFinder.cs" />
-    <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationPresenter.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteImplementationPresenter.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteParameter.cs" />
     <Compile Include="Domain\Factory.cs" />
     <Compile Include="Domain\GoToInterfaceImplementationAlgorithm.cs" />
     <Compile Include="Domain\Contracts\ICodeEditor.cs" />
-    <Compile Include="Domain\Contracts\IInterfaceImplementationFinder.cs" />
+    <Compile Include="Domain\Contracts\IImplementationFinder.cs" />
     <Compile Include="Domain\Contracts\IClass.cs" />
     <Compile Include="Domain\Contracts\IInterface.cs" />
     <Compile Include="Domain\Contracts\ICodeElement.cs" />

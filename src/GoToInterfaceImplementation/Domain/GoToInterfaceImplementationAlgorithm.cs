@@ -11,23 +11,22 @@ namespace GoToInterfaceImplementation.Domain
         public void Execute()
         {
             ICodeEditor codeEditor = Factory.Current.CreateCodeEditor();
-            IInterface selectedInterface = codeEditor.GetSelectedCodeElement() as IInterface;
 
-            if (selectedInterface == null)
+            IDeclarationOf<ICodeElement> selectedDeclaration = 
+                codeEditor.GetSelectedCodeElement() as IDeclarationOf<ICodeElement>;
+
+            if (selectedDeclaration == null)
             {
                 return;
             }
 
-            IInterfaceImplementationFinder finder = 
-                Factory.Current.CreateInterfaceImplementationFinder(codeEditor);
+            IEnumerable<ICodeElement> selectedDeclarationImplementations =
+                selectedDeclaration.FindImplementations();
 
-            IEnumerable<IClass> selectedInterfaceImplementations = 
-                selectedInterface.FindImplementations(finder);
+            IImplementationPresenter presenter =
+                Factory.Current.CreateImplementationPresenter();
 
-            IInterfaceImplementationPresenter presenter =
-                Factory.Current.CreateInterfaceImplementationPresenter(codeEditor);
-
-            presenter.Present(selectedInterfaceImplementations);
+            presenter.Present(selectedDeclarationImplementations);
         }
     }
 }

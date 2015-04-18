@@ -26,30 +26,38 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
             TextPoint selectionPoint = selection.ActivePoint;
 
-            CodeInterface selectedCodeInterface = null;
-
             try
             {
-                selectedCodeInterface = (CodeInterface)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
+                CodeFunction selectedCodeFunction = (CodeFunction)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
                     selectionPoint,
-                    vsCMElement.vsCMElementInterface);
+                    vsCMElement.vsCMElementFunction);
+
+                return new EnvDteInterfaceMember(this, selectedCodeFunction);
             }
             catch (COMException)
             {
             }
 
-            ICodeElement codeElement = (selectedCodeInterface != null) ? 
-                new EnvDteInterface(selectedCodeInterface) : 
-                null;
+            try
+            {
+                CodeInterface selectedCodeInterface = (CodeInterface)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
+                    selectionPoint,
+                    vsCMElement.vsCMElementInterface);
 
-            return codeElement;
+                return new EnvDteInterface(this, selectedCodeInterface);
+            }
+            catch (COMException)
+            {
+            }
+
+            return null;
         }
 
         public IEnumerable<IClass> GetClassesInSolution()
         {
             IEnumerable<IClass> classes =
                 from c in GetClassesInSolution(_dte.Solution)
-                select new EnvDteClass(c);
+                select new EnvDteClass(this, c);
 
             return classes;
         }
@@ -77,6 +85,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         private IEnumerable<CodeClass> GetClassesInProject(Project project)
         {
+            if (project.CodeModel == null)
+            {
+                return Enumerable.Empty<CodeClass>();
+            }
+
             return GetClasses(project.CodeModel.CodeElements);
         }
 

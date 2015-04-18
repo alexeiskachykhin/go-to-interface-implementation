@@ -6,5 +6,7 @@ namespace GoToInterfaceImplementation.Domain.Contracts
     public interface IClass : ICodeElement
     {
         IEnumerable<IInterface> ImplementedInterfaces { get; }
+
+        IEnumerable<IClassMember> Members { get; }
     }
 }

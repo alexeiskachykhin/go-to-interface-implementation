@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
-    public interface IInterface : ICodeElement, IDeclarationOf<IClass>
+    public interface IImplementationPresenter
     {
+        void Present(IEnumerable<ICodeElement> codeElementImplementations);
     }
 }

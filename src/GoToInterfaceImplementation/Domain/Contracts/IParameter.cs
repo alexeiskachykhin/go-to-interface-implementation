@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
-    public interface IInterface : ICodeElement, IDeclarationOf<IClass>
+    public interface IParameter : ICodeElement
     {
     }
 }

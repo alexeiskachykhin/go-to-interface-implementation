@@ -11,14 +11,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             return new EnvDteCodeEditor();
         }
 
-        public override IInterfaceImplementationFinder CreateInterfaceImplementationFinder(ICodeEditor codeEditor)
+        public override IImplementationPresenter CreateImplementationPresenter()
         {
-            return new EnvDteInterfaceImplementationFinder(codeEditor);
-        }
-
-        public override IInterfaceImplementationPresenter CreateInterfaceImplementationPresenter(ICodeEditor codeEditor)
-        {
-            return new EnvDteInterfaceImplementationPresenter(codeEditor);
+            return new EnvDteImplementationPresenter();
         }
     }
 }

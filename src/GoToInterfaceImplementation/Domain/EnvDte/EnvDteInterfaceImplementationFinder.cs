@@ -7,7 +7,7 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteInterfaceImplementationFinder : IInterfaceImplementationFinder
+    public class EnvDteInterfaceImplementationFinder : IImplementationFinder<IInterface, IClass>
     {
         private readonly ICodeEditor _codeEditor;
 
