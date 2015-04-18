@@ -125,11 +125,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
+    <Compile Include="Domain\Contracts\IInterfaceImplementationPresenter.cs" />
     <Compile Include="Domain\EnvDte\EnvDteCodeEditor.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClass.cs" />
     <Compile Include="Domain\EnvDte\EnvDteFactory.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterface.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationPresenter.cs" />
     <Compile Include="Domain\Factory.cs" />
     <Compile Include="Domain\GoToInterfaceImplementationAlgorithm.cs" />
     <Compile Include="Domain\Contracts\ICodeEditor.cs" />

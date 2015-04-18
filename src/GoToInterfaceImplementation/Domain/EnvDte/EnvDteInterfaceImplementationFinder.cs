@@ -18,15 +18,15 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public IClass Find(IInterface codeInterface)
+        public IEnumerable<IClass> Find(IInterface codeInterface)
         {
             IEnumerable<IClass> codeClasses = _codeEditor.GetClassesInSolution();
 
-            IClass derivedCodeClass = codeClasses.FirstOrDefault(
+            IEnumerable<IClass> derivedCodeClasses = codeClasses.Where(
                 c => c.ImplementedInterfaces.Any(
                     b => b.FullName == codeInterface.FullName));
 
-            return derivedCodeClass;
+            return derivedCodeClasses;
         }
     }
 }

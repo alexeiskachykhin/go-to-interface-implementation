@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
     public interface IInterface : ICodeElement
     {
-        void RevealImplementationInCodeEditor(ICodeEditor codeEditor);
+        IEnumerable<IClass> FindImplementations(IInterfaceImplementationFinder finder);
     }
 }

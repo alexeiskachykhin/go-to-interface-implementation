@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using EnvDTE;
 
@@ -28,15 +29,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             throw new NotImplementedException();
         }
 
-        public void RevealImplementationInCodeEditor(ICodeEditor codeEditor)
+        public IEnumerable<IClass> FindImplementations(IInterfaceImplementationFinder finder)
         {
-            var finder = new EnvDteInterfaceImplementationFinder(codeEditor);
-            var derivedCodeClass = finder.Find(this);
-
-            if (derivedCodeClass != null)
-            {
-                derivedCodeClass.RevealInCodeEditor();
-            }
+            return finder.Find(this);
         }
     }
 }

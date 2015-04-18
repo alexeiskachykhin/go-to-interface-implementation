@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using GoToInterfaceImplementation.Domain.EnvDte;
 using GoToInterfaceImplementation.Domain.Contracts;
@@ -9,13 +10,24 @@ namespace GoToInterfaceImplementation.Domain
     {
         public void Execute()
         {
-            ICodeEditor codeEditor = Factory.Current.Create<ICodeEditor>();
+            ICodeEditor codeEditor = Factory.Current.CreateCodeEditor();
             IInterface selectedInterface = codeEditor.GetSelectedCodeElement() as IInterface;
 
-            if (selectedInterface != null)
+            if (selectedInterface == null)
             {
-                selectedInterface.RevealImplementationInCodeEditor(codeEditor);
+                return;
             }
+
+            IInterfaceImplementationFinder finder = 
+                Factory.Current.CreateInterfaceImplementationFinder(codeEditor);
+
+            IEnumerable<IClass> selectedInterfaceImplementations = 
+                selectedInterface.FindImplementations(finder);
+
+            IInterfaceImplementationPresenter presenter =
+                Factory.Current.CreateInterfaceImplementationPresenter(codeEditor);
+
+            presenter.Present(selectedInterfaceImplementations);
         }
     }
 }

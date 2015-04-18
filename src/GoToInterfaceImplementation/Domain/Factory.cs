@@ -1,13 +1,17 @@
 ﻿using System;
 
 using GoToInterfaceImplementation.Domain.EnvDte;
+using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain
 {
     public abstract class Factory
     {
-        public abstract T Create<T>()
-            where T : class;
+        public abstract ICodeEditor CreateCodeEditor();
+
+        public abstract IInterfaceImplementationFinder CreateInterfaceImplementationFinder(ICodeEditor codeEditor);
+
+        public abstract IInterfaceImplementationPresenter CreateInterfaceImplementationPresenter(ICodeEditor codeEditor);
 
 
         private static Factory _current;
