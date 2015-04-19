@@ -10,5 +10,7 @@ namespace GoToInterfaceImplementation.Domain.Contracts
         IEnumerable<IClassMethod> Methods { get; }
 
         IEnumerable<IClassProperty> Properties { get; }
+
+        IEnumerable<IClassEvent> Events { get; }
     }
 }

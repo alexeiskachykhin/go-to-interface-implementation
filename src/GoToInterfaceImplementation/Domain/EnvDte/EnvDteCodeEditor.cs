@@ -32,6 +32,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             {
                 new { DomainType = typeof(EnvDteInterfaceMethod), EnvDteType = typeof(CodeFunction), EnvDteKind = vsCMElement.vsCMElementFunction },
                 new { DomainType = typeof(EnvDteInterfaceProperty), EnvDteType = typeof(CodeProperty2), EnvDteKind = vsCMElement.vsCMElementProperty },
+                new { DomainType = typeof(EnvDteInterfaceEvent), EnvDteType = typeof(CodeEvent), EnvDteKind = vsCMElement.vsCMElementEvent },
                 new { DomainType = typeof(EnvDteInterface), EnvDteType = typeof(CodeInterface), EnvDteKind = vsCMElement.vsCMElementInterface }
             };
 

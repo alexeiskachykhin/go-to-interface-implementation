@@ -35,6 +35,18 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             }
         }
 
+        public IEnumerable<IClassEvent> Events
+        {
+            get 
+            {
+                IEnumerable<IClassEvent> classEvents =
+                    from i in CodeElement.Children.OfType<CodeEvent>()
+                    select new EnvDteClassEvent(CodeEditor, i);
+
+                return classEvents;
+            }
+        }
+
         public IEnumerable<IInterface> ImplementedInterfaces
         {
             get 
@@ -56,7 +68,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public bool IsMatch(IInterface declaration)
         {
-            bool isMatch = this.ImplementedInterfaces.Any(
+            bool isMatch = ImplementedInterfaces.Any(
                 c => declaration.FullName == c.FullName);
 
             return isMatch;

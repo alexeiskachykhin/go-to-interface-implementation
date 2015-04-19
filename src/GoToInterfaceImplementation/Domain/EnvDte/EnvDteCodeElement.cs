@@ -15,6 +15,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         private T _codeElement;
 
 
+        public string Name
+        {
+            get { return ((CodeElement)_codeElement).Name; }
+        }
+
         public string FullName
         {
             get { return ((CodeElement)_codeElement).FullName; }

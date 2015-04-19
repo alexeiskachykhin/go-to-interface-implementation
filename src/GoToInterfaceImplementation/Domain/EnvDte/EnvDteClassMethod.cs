@@ -31,14 +31,19 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public bool IsMatch(IInterfaceMethod declaration)
         {
-            IEnumerable<IParameter> classMemberParameters = this.Parameters;
-            IEnumerable<IParameter> interfaceMemberParameters = declaration.Parameters;
+            ISignature classMethodSignature = new Signature()
+            {
+                Name = Name,
+                Parameters = Parameters
+            };
 
-            bool isMatch = classMemberParameters
-                .Zip(interfaceMemberParameters, (p1, p2) => p1.FullName == p2.FullName)
-                .All(p => p);
+            ISignature interfaceMethodSignature = new Signature()
+            {
+                Name = declaration.Name,
+                Parameters = declaration.Parameters
+            };
 
-            return isMatch;
+            return classMethodSignature.Equals(interfaceMethodSignature);
         }
     }
 }
