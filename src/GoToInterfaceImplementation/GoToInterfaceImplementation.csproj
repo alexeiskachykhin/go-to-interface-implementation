@@ -135,7 +135,6 @@
     <Compile Include="Domain\Contracts\IInterfaceMethod.cs" />
     <Compile Include="Domain\Contracts\IImplementationPresenter.cs" />
     <Compile Include="Domain\Contracts\IParameter.cs" />
-    <Compile Include="Domain\Contracts\ISignature.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClassEvent.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClassProperty.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClassMethod.cs" />

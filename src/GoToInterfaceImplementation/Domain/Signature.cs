@@ -6,7 +6,7 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain
 {
-    public class Signature : ISignature
+    public class Signature : IEquatable<Signature>
     {
         private IEnumerable<IParameter> _parameters;
 
@@ -28,7 +28,7 @@ namespace GoToInterfaceImplementation.Domain
         }
 
 
-        public bool Equals(ISignature other)
+        public bool Equals(Signature other)
         {
             if (other == null)
             {
@@ -54,7 +54,7 @@ namespace GoToInterfaceImplementation.Domain
                 return false;
             }
 
-            return Equals((ISignature)obj);
+            return Equals((Signature)obj);
         }
 
         public override int GetHashCode()
@@ -63,7 +63,7 @@ namespace GoToInterfaceImplementation.Domain
         }
 
 
-        private bool NamesEquals(ISignature a, ISignature b)
+        private bool NamesEquals(Signature a, Signature b)
         {
             bool isEquals =
                 (a.Name == b.Name) &&
@@ -72,7 +72,7 @@ namespace GoToInterfaceImplementation.Domain
             return isEquals;
         }
 
-        private bool ParametersEquals(ISignature a, ISignature b)
+        private bool ParametersEquals(Signature a, Signature b)
         {
             bool isParametersCountEquals = (a.Parameters.Count() == b.Parameters.Count());
 

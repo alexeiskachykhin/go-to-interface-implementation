@@ -31,13 +31,13 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public bool IsMatch(IInterfaceMethod declaration)
         {
-            ISignature classMethodSignature = new Signature()
+            Signature classMethodSignature = new Signature()
             {
                 Name = Name,
                 Parameters = Parameters
             };
 
-            ISignature interfaceMethodSignature = new Signature()
+            Signature interfaceMethodSignature = new Signature()
             {
                 Name = declaration.Name,
                 Parameters = declaration.Parameters

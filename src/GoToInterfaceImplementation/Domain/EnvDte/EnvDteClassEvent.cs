@@ -19,12 +19,12 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public bool IsMatch(IInterfaceEvent declaration)
         {
-            ISignature classEventSignature = new Signature()
+            Signature classEventSignature = new Signature()
             {
                 Name = Name
             };
 
-            ISignature interfaceEventSignature = new Signature()
+            Signature interfaceEventSignature = new Signature()
             {
                 Name = declaration.Name
             };

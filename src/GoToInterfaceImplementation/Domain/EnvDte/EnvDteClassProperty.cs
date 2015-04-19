@@ -32,13 +32,13 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public bool IsMatch(IInterfaceProperty declaration)
         {
-            ISignature classPropertySignature = new Signature()
+            Signature classPropertySignature = new Signature()
             {
                 Name = Name,
                 Parameters = Parameters
             };
 
-            ISignature interfacePropertySignature = new Signature()
+            Signature interfacePropertySignature = new Signature()
             {
                 Name = declaration.Name,
                 Parameters = declaration.Parameters
