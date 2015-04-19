@@ -8,25 +8,15 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteClassMember : IClassMember
+    public class EnvDteClassMember : EnvDteCodeElement<CodeFunction>, IClassMember
     {
-        private readonly ICodeEditor _codeEditor;
-
-        private readonly CodeFunction _codeFunction;
-
-
-        public string FullName
-        {
-            get { return _codeFunction.FullName; }
-        }
-
         public IEnumerable<IParameter> Parameters
         {
             get 
             {
                 IEnumerable<IParameter> parameters =
-                    from i in _codeFunction.Parameters.OfType<CodeParameter>()
-                    select new EnvDteParameter(_codeEditor, i);
+                    from i in CodeElement.Parameters.OfType<CodeParameter>()
+                    select new EnvDteParameter(CodeEditor, i);
 
                 return parameters;
             }
@@ -34,19 +24,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
 
         public EnvDteClassMember(ICodeEditor codeEditor, CodeFunction codeFunction)
+            : base(codeEditor, codeFunction)
         {
-            _codeEditor = codeEditor;
-            _codeFunction = codeFunction;
-        }
-
-
-        public void RevealInCodeEditor()
-        {
-            Window window = _codeFunction.ProjectItem.Open();
-            window.Activate();
-
-            TextSelection selection = (TextSelection)window.Selection;
-            selection.MoveToPoint(_codeFunction.StartPoint);
         }
     }
 }

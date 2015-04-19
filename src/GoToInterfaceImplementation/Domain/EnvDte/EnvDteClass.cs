@@ -8,25 +8,15 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteClass : IClass
+    public class EnvDteClass : EnvDteCodeElement<CodeClass>, IClass
     {
-        private readonly ICodeEditor _codeEditor;
-
-        private readonly CodeClass _codeClass;
-
-
-        public string FullName
-        {
-            get { return _codeClass.FullName; }
-        }
-
         public IEnumerable<IClassMember> Members
         {
             get 
             {
                 IEnumerable<IClassMember> classMembers =
-                    from i in _codeClass.Children.OfType<CodeFunction>()
-                    select new EnvDteClassMember(_codeEditor, i);
+                    from i in CodeElement.Children.OfType<CodeFunction>()
+                    select new EnvDteClassMember(CodeEditor, i);
 
                 return classMembers;
             }
@@ -37,28 +27,17 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             get 
             {
                 IEnumerable<IInterface> implementedInterfaces =
-                    from i in _codeClass.ImplementedInterfaces.OfType<CodeInterface>()
-                    select new EnvDteInterface(_codeEditor, i);
+                    from i in CodeElement.ImplementedInterfaces.OfType<CodeInterface>()
+                    select new EnvDteInterface(CodeEditor, i);
 
                 return implementedInterfaces;
             }
         }
 
 
-        public EnvDteClass(ICodeEditor codeEditor, CodeClass codeClass)
+        public EnvDteClass(ICodeEditor codeEditor, CodeClass codeElement)
+            : base(codeEditor, codeElement)
         {
-            _codeEditor = codeEditor;
-            _codeClass = codeClass;
-        }
-
-
-        public void RevealInCodeEditor()
-        {
-            Window window = _codeClass.ProjectItem.Open();
-            window.Activate();
-
-            TextSelection selection = (TextSelection)window.Selection;
-            selection.MoveToPoint(_codeClass.StartPoint);
         }
     }
 }

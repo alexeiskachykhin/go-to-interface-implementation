@@ -8,29 +8,11 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteParameter : IParameter
+    public class EnvDteParameter : EnvDteCodeElement<CodeParameter>, IParameter
     {
-        private readonly ICodeEditor _codeEditor;
-
-        private readonly CodeParameter _codeParameter;
-
-
-        public string FullName
-        {
-            get { return _codeParameter.FullName; }
-        }
-
-
         public EnvDteParameter(ICodeEditor codeEditor, CodeParameter codeParameter)
+            : base(codeEditor, codeParameter)
         {
-            _codeEditor = codeEditor;
-            _codeParameter = codeParameter;
-        }
-
-
-        public void RevealInCodeEditor()
-        {
-            throw new NotImplementedException();
         }
     }
 }

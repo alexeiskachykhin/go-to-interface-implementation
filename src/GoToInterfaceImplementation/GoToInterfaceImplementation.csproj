@@ -139,6 +139,7 @@
     <Compile Include="Domain\EnvDte\EnvDteInterface.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\EnvDteImplementationPresenter.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteCodeElement.cs" />
     <Compile Include="Domain\EnvDte\EnvDteParameter.cs" />
     <Compile Include="Domain\Factory.cs" />
     <Compile Include="Domain\GoToInterfaceImplementationAlgorithm.cs" />

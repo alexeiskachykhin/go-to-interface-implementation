@@ -8,21 +8,11 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteInterfaceMember : IInterfaceMember
+    public class EnvDteInterfaceMember : EnvDteCodeElement<CodeFunction>, IInterfaceMember
     {
-        private readonly ICodeEditor _codeEditor;
-
-        private readonly CodeFunction _codeFunction;
-
-
-        public string FullName
-        {
-            get { return _codeFunction.FullName; }
-        }
-
         public IInterface Interface
         {
-            get { return new EnvDteInterface(_codeEditor, (CodeInterface)_codeFunction.Parent); }
+            get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Parent); }
         }
 
         public IEnumerable<IParameter> Parameters
@@ -30,8 +20,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             get 
             {
                 IEnumerable<IParameter> parameters =
-                    from i in _codeFunction.Parameters.OfType<CodeParameter>()
-                    select new EnvDteParameter(_codeEditor, i);
+                    from i in CodeElement.Parameters.OfType<CodeParameter>()
+                    select new EnvDteParameter(CodeEditor, i);
 
                 return parameters;
             }
@@ -39,16 +29,10 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
 
         public EnvDteInterfaceMember(ICodeEditor codeEditor, CodeFunction codeFunction)
+            : base(codeEditor, codeFunction)
         {
-            _codeEditor = codeEditor;
-            _codeFunction = codeFunction;
         }
 
-
-        public void RevealInCodeEditor()
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<IClassMember> FindImplementations()
         {
