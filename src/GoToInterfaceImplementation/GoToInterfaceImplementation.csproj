@@ -125,18 +125,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
-    <Compile Include="Domain\Contracts\IClassMember.cs" />
+    <Compile Include="Domain\Contracts\IClassProperty.cs" />
+    <Compile Include="Domain\Contracts\IClassMethod.cs" />
     <Compile Include="Domain\Contracts\IDefinitionOf.cs" />
     <Compile Include="Domain\Contracts\IDeclarationOf.cs" />
-    <Compile Include="Domain\Contracts\IInterfaceMember.cs" />
+    <Compile Include="Domain\Contracts\IInterfaceProperty.cs" />
+    <Compile Include="Domain\Contracts\IInterfaceMethod.cs" />
     <Compile Include="Domain\Contracts\IImplementationPresenter.cs" />
     <Compile Include="Domain\Contracts\IParameter.cs" />
-    <Compile Include="Domain\EnvDte\EnvDteClassMember.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteClassProperty.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteClassMethod.cs" />
     <Compile Include="Domain\EnvDte\EnvDteCodeEditor.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClass.cs" />
     <Compile Include="Domain\EnvDte\EnvDteFactory.cs" />
-    <Compile Include="Domain\EnvDte\EnvDteInterfaceMemberImplementationFinder.cs" />
-    <Compile Include="Domain\EnvDte\EnvDteInterfaceMember.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfacePropertyImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceProperty.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceMethodImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceMethod.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterface.cs" />
     <Compile Include="Domain\EnvDte\EnvDteInterfaceImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\EnvDteImplementationPresenter.cs" />

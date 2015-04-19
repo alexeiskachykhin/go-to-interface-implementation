@@ -7,6 +7,8 @@ namespace GoToInterfaceImplementation.Domain.Contracts
     {
         IEnumerable<IInterface> ImplementedInterfaces { get; }
 
-        IEnumerable<IClassMember> Members { get; }
+        IEnumerable<IClassMethod> Methods { get; }
+
+        IEnumerable<IClassProperty> Properties { get; }
     }
 }

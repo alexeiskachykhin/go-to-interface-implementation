@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
-    public interface IClassMember : ICodeElement, IDefinitionOf<IInterfaceMember>
+    public interface IClassMethod : ICodeElement, IDefinitionOf<IInterfaceMethod>
     {
         IEnumerable<IParameter> Parameters { get; }
     }

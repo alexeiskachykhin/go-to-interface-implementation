@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 
 using EnvDTE;
+using EnvDTE80;
 
 using GoToInterfaceImplementation.Integration;
 using GoToInterfaceImplementation.Domain.Contracts;
@@ -32,7 +33,19 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
                     selectionPoint,
                     vsCMElement.vsCMElementFunction);
 
-                return new EnvDteInterfaceMember(this, selectedCodeFunction);
+                return new EnvDteInterfaceMethod(this, selectedCodeFunction);
+            }
+            catch (COMException)
+            {
+            }
+
+            try
+            {
+                CodeProperty2 selectedCodeProperty = (CodeProperty2)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
+                    selectionPoint,
+                    vsCMElement.vsCMElementProperty);
+
+                return new EnvDteInterfaceProperty(this, selectedCodeProperty);
             }
             catch (COMException)
             {

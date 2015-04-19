@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using EnvDTE;
+using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts;
 
@@ -10,15 +11,27 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 {
     public class EnvDteClass : EnvDteCodeElement<CodeClass>, IClass
     {
-        public IEnumerable<IClassMember> Members
+        public IEnumerable<IClassMethod> Methods
         {
             get 
             {
-                IEnumerable<IClassMember> classMembers =
+                IEnumerable<IClassMethod> classMethods =
                     from i in CodeElement.Children.OfType<CodeFunction>()
-                    select new EnvDteClassMember(CodeEditor, i);
+                    select new EnvDteClassMethod(CodeEditor, i);
 
-                return classMembers;
+                return classMethods;
+            }
+        }
+
+        public IEnumerable<IClassProperty> Properties
+        {
+            get 
+            {
+                IEnumerable<IClassProperty> classProperties =
+                    from i in CodeElement.Children.OfType<CodeProperty2>()
+                    select new EnvDteClassProperty(CodeEditor, i);
+
+                return classProperties;
             }
         }
 

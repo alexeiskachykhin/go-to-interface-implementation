@@ -8,7 +8,7 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteClassMember : EnvDteCodeElement<CodeFunction>, IClassMember
+    public class EnvDteClassMethod : EnvDteCodeElement<CodeFunction>, IClassMethod
     {
         public IEnumerable<IParameter> Parameters
         {
@@ -23,13 +23,13 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public EnvDteClassMember(ICodeEditor codeEditor, CodeFunction codeFunction)
+        public EnvDteClassMethod(ICodeEditor codeEditor, CodeFunction codeFunction)
             : base(codeEditor, codeFunction)
         {
         }
 
 
-        public bool IsMatch(IInterfaceMember declaration)
+        public bool IsMatch(IInterfaceMethod declaration)
         {
             IEnumerable<IParameter> classMemberParameters = this.Parameters;
             IEnumerable<IParameter> interfaceMemberParameters = declaration.Parameters;

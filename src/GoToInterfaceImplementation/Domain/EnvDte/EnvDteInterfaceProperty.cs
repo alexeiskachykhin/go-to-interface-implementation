@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 
 using EnvDTE;
+using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteInterfaceMember : EnvDteCodeElement<CodeFunction>, IInterfaceMember
+    public class EnvDteInterfaceProperty : EnvDteCodeElement<CodeProperty2>, IInterfaceProperty
     {
         public IInterface Interface
         {
-            get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Parent); }
+            get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Parent2); }
         }
 
         public IEnumerable<IParameter> Parameters
@@ -28,16 +29,16 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public EnvDteInterfaceMember(ICodeEditor codeEditor, CodeFunction codeFunction)
-            : base(codeEditor, codeFunction)
+        public EnvDteInterfaceProperty(ICodeEditor codeEditor, CodeProperty2 codeProperty)
+            : base(codeEditor, codeProperty)
         {
         }
 
 
-        public IEnumerable<IClassMember> FindImplementations()
+        public IEnumerable<IClassProperty> FindImplementations()
         {
-            IImplementationFinder<IInterfaceMember, IClassMember> finder = 
-                new EnvDteInterfaceMemberImplementationFinder();
+            IImplementationFinder<IInterfaceProperty, IClassProperty> finder =
+                new EnvDteInterfacePropertyImplementationFinder();
 
             return finder.Find(this);
         }
