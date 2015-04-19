@@ -27,5 +27,18 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             : base(codeEditor, codeFunction)
         {
         }
+
+
+        public bool IsMatch(IInterfaceMember declaration)
+        {
+            IEnumerable<IParameter> classMemberParameters = this.Parameters;
+            IEnumerable<IParameter> interfaceMemberParameters = declaration.Parameters;
+
+            bool isMatch = classMemberParameters
+                .Zip(interfaceMemberParameters, (p1, p2) => p1.FullName == p2.FullName)
+                .All(p => p);
+
+            return isMatch;
+        }
     }
 }

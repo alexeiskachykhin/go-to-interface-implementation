@@ -39,5 +39,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             : base(codeEditor, codeElement)
         {
         }
+
+
+        public bool IsMatch(IInterface declaration)
+        {
+            bool isMatch = this.ImplementedInterfaces.Any(
+                c => declaration.FullName == c.FullName);
+
+            return isMatch;
+        }
     }
 }

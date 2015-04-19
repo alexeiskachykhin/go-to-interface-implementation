@@ -8,8 +8,5 @@ namespace GoToInterfaceImplementation.Domain.Contracts
         IInterface Interface { get; }
 
         IEnumerable<IParameter> Parameters { get; }
-
-
-        bool IsMatch(IClassMember classMember);
     }
 }

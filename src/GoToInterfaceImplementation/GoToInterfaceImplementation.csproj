@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
     <Compile Include="Domain\Contracts\IClassMember.cs" />
+    <Compile Include="Domain\Contracts\IDefinitionOf.cs" />
     <Compile Include="Domain\Contracts\IDeclarationOf.cs" />
     <Compile Include="Domain\Contracts\IInterfaceMember.cs" />
     <Compile Include="Domain\Contracts\IImplementationPresenter.cs" />

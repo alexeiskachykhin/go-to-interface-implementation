@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
-    public interface IClass : ICodeElement
+    public interface IClass : ICodeElement, IDefinitionOf<IInterface>
     {
         IEnumerable<IInterface> ImplementedInterfaces { get; }
 

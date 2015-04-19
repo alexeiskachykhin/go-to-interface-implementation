@@ -13,7 +13,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         {
             IEnumerable<IClass> interfaceImplementations = codeInterfaceMember.Interface.FindImplementations();
             IEnumerable<IClassMember> members = interfaceImplementations.SelectMany(i => i.Members);
-            IEnumerable<IClassMember> matchedMembers = members.Where(m => codeInterfaceMember.IsMatch(m));
+            IEnumerable<IClassMember> matchedMembers = members.Where(m => m.IsMatch(codeInterfaceMember));
 
             return matchedMembers;
         }

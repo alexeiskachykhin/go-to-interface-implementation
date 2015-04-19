@@ -23,8 +23,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             IEnumerable<IClass> codeClasses = _codeEditor.GetClassesInSolution();
 
             IEnumerable<IClass> derivedCodeClasses = codeClasses.Where(
-                c => c.ImplementedInterfaces.Any(
-                    b => b.FullName == codeInterface.FullName));
+                c => c.IsMatch(codeInterface));
 
             return derivedCodeClasses;
         }

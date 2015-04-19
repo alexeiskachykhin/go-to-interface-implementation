@@ -41,17 +41,5 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
             return finder.Find(this);
         }
-
-        public bool IsMatch(IClassMember classMember)
-        {
-            IEnumerable<IParameter> classMemberParameters = classMember.Parameters;
-            IEnumerable<IParameter> interfaceMemberParameters = this.Parameters;
-
-            bool isMatch = classMemberParameters
-                .Zip(interfaceMemberParameters, (p1, p2) => p1.FullName == p2.FullName)
-                .All(p => p);
-
-            return isMatch;
-        }
     }
 }
