@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 using EnvDTE;
@@ -27,43 +28,35 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
             TextPoint selectionPoint = selection.ActivePoint;
 
-            try
+            var elementTypes = new[] 
             {
-                CodeFunction selectedCodeFunction = (CodeFunction)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
-                    selectionPoint,
-                    vsCMElement.vsCMElementFunction);
+                new { DomainType = typeof(EnvDteInterfaceMethod), EnvDteType = typeof(CodeFunction), EnvDteKind = vsCMElement.vsCMElementFunction },
+                new { DomainType = typeof(EnvDteInterfaceProperty), EnvDteType = typeof(CodeProperty2), EnvDteKind = vsCMElement.vsCMElementProperty },
+                new { DomainType = typeof(EnvDteInterface), EnvDteType = typeof(CodeInterface), EnvDteKind = vsCMElement.vsCMElementInterface }
+            };
 
-                return new EnvDteInterfaceMethod(this, selectedCodeFunction);
-            }
-            catch (COMException)
+            IEnumerable<ICodeElement> possiblySelectedCodeElements = elementTypes.Select(x =>
             {
-            }
+                try
+                {
+                    CodeElement codeElement =
+                        _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(selectionPoint, x.EnvDteKind);
 
-            try
-            {
-                CodeProperty2 selectedCodeProperty = (CodeProperty2)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
-                    selectionPoint,
-                    vsCMElement.vsCMElementProperty);
+                    ConstructorInfo constructor =
+                        x.DomainType.GetConstructor(new[] { typeof(ICodeEditor), x.EnvDteType });
 
-                return new EnvDteInterfaceProperty(this, selectedCodeProperty);
-            }
-            catch (COMException)
-            {
-            }
+                    return (ICodeElement)constructor.Invoke(new object[] { this, codeElement });
+                }
+                catch (COMException)
+                {
+                    return null;
+                }
+            });
 
-            try
-            {
-                CodeInterface selectedCodeInterface = (CodeInterface)_dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
-                    selectionPoint,
-                    vsCMElement.vsCMElementInterface);
+            ICodeElement selectedCodeElement = possiblySelectedCodeElements
+                .FirstOrDefault(e => e != null);
 
-                return new EnvDteInterface(this, selectedCodeInterface);
-            }
-            catch (COMException)
-            {
-            }
-
-            return null;
+            return selectedCodeElement;
         }
 
         public IEnumerable<IClass> GetClassesInSolution()
