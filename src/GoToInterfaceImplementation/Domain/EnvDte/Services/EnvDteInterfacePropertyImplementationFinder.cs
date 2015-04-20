@@ -8,7 +8,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
-    public class EnvDteInterfacePropertyImplementationFinder : IImplementationFinder<IInterfaceProperty, IClassProperty>
+    internal class EnvDteInterfacePropertyImplementationFinder : IImplementationFinder<IInterfaceProperty, IClassProperty>
     {
         public IEnumerable<IClassProperty> Find(IInterfaceProperty codeInterfaceProperty)
         {

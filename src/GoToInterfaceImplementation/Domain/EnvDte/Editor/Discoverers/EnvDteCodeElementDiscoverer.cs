@@ -13,7 +13,7 @@ using GoToInterfaceImplementation.Integration;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    public abstract class EnvDteCodeElementDiscoverer
+    internal abstract class EnvDteCodeElementDiscoverer
     {
         private readonly DTE2 _dte;
 

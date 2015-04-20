@@ -7,7 +7,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
-    public class EnvDteInterfaceMethodImplementationFinder : IImplementationFinder<IInterfaceMethod, IClassMethod>
+    internal class EnvDteInterfaceMethodImplementationFinder : IImplementationFinder<IInterfaceMethod, IClassMethod>
     {
         public IEnumerable<IClassMethod> Find(IInterfaceMethod codeInterfaceMethod)
         {

@@ -9,7 +9,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    public class EnvDteInterfaceMethodDiscoverer : EnvDteCodeElementDiscoverer
+    internal class EnvDteInterfaceMethodDiscoverer : EnvDteCodeElementDiscoverer
     {
         public EnvDteInterfaceMethodDiscoverer(ICodeEditor codeEditor)
             : base(
