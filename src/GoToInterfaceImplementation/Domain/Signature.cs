@@ -15,6 +15,8 @@ namespace GoToInterfaceImplementation.Domain
 
         public string FullName { get; set; }
 
+        public string ReturnTypeFullName { get; set; }
+
         public IEnumerable<IParameter> Parameters
         {
             get { return _parameters; }
@@ -67,7 +69,8 @@ namespace GoToInterfaceImplementation.Domain
         {
             bool isEquals =
                 (a.Name == b.Name) &&
-                (a.FullName == b.FullName);
+                (a.FullName == b.FullName) &&
+                (a.ReturnTypeFullName == b.ReturnTypeFullName);
 
             return isEquals;
         }

@@ -7,6 +7,8 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Code
     {
         IInterface Interface { get; }
 
+        string ReturnTypeFullName { get;  }
+
         IEnumerable<IParameter> Parameters { get; }
     }
 }

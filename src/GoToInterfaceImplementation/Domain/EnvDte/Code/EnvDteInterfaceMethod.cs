@@ -18,6 +18,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Parent); }
         }
 
+        public string ReturnTypeFullName
+        {
+            get { return CodeElement.Type.AsFullName; }
+        }
+
         public IEnumerable<IParameter> Parameters
         {
             get 

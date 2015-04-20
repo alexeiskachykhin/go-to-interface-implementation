@@ -11,6 +11,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class EnvDteClassMethod : EnvDteCodeElement<CodeFunction>, IClassMethod
     {
+        public string ReturnTypeFullName
+        {
+            get { return CodeElement.Type.AsFullName; }
+        }
+
         public IEnumerable<IParameter> Parameters
         {
             get 
@@ -35,13 +40,15 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             Signature classMethodSignature = new Signature()
             {
                 Name = Name,
-                Parameters = Parameters
+                Parameters = Parameters,
+                ReturnTypeFullName = ReturnTypeFullName
             };
 
             Signature interfaceMethodSignature = new Signature()
             {
                 Name = declaration.Name,
-                Parameters = declaration.Parameters
+                Parameters = declaration.Parameters,
+                ReturnTypeFullName = declaration.ReturnTypeFullName
             };
 
             return classMethodSignature.Equals(interfaceMethodSignature);
