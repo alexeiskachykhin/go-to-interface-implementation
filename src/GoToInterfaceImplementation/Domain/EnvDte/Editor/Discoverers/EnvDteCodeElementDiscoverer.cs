@@ -38,28 +38,48 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         public ICodeElement Discover()
         {
+            CodeElement codeElement = GetCodeElement();
+
+            if (codeElement != null)
+            {
+                return CreateDomainModel(codeElement);
+            }
+
+            return null;
+        }
+
+
+        protected virtual ICodeElement CreateDomainModel(CodeElement codeElement)
+        {
+            ConstructorInfo constructor =
+                    DomainType.GetConstructor(new[] { typeof(ICodeEditor), EnvDteType });
+
+            return (ICodeElement)constructor.Invoke(new object[] { CodeEditor, codeElement });
+        }
+
+        protected virtual CodeElement GetCodeElement()
+        {
+            CodeElement codeElement = null;
+
             TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
             TextPoint selectionPoint = selection.ActivePoint;
 
             try
             {
-                CodeElement codeElement =
-                    _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(selectionPoint, EnvDteKind);
-
-                if (!IsApplicable(codeElement))
-                {
-                    return null;
-                }
-
-                ConstructorInfo constructor =
-                    DomainType.GetConstructor(new[] { typeof(ICodeEditor), EnvDteType });
-
-                return (ICodeElement)constructor.Invoke(new object[] { CodeEditor, codeElement });
+                codeElement = _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
+                    selectionPoint, EnvDteKind);
             }
             catch (COMException)
             {
                 return null;
             }
+
+            if (!IsApplicable(codeElement))
+            {
+                return null;
+            }
+
+            return codeElement;
         }
 
         protected abstract bool IsApplicable(CodeElement codeElement);
