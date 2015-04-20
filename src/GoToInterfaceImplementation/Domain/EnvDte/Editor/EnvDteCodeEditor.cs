@@ -17,12 +17,12 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 {
     public class EnvDteCodeEditor : ICodeEditor
     {
-        private readonly DTE _dte;
+        private readonly DTE2 _dte;
 
 
         public EnvDteCodeEditor()
         {
-            _dte = PackageServiceLocator.Current.GetService<DTE>();
+            _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
         }
 
 

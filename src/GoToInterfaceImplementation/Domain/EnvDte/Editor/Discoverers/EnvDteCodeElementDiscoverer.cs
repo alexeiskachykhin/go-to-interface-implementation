@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 using EnvDTE;
+using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
@@ -14,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
     public abstract class EnvDteCodeElementDiscoverer
     {
-        private readonly DTE _dte;
+        private readonly DTE2 _dte;
 
 
         public ICodeEditor CodeEditor { get; private set; }
@@ -28,7 +29,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         public EnvDteCodeElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
         {
-            _dte = PackageServiceLocator.Current.GetService<DTE>();
+            _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
 
             CodeEditor = codeEditor;
             DomainType = domainType;
