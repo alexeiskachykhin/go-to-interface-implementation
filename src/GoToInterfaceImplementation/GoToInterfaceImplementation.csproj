@@ -134,7 +134,7 @@
     <Compile Include="Domain\Contracts\Code\IParameterOfInterfaceType.cs" />
     <Compile Include="Domain\Contracts\Code\IInterfaceProperty.cs" />
     <Compile Include="Domain\Contracts\Code\IInterfaceMethod.cs" />
-    <Compile Include="Domain\Contracts\Services\IImplementationPresenter.cs" />
+    <Compile Include="Domain\Contracts\Services\IImplementationSelector.cs" />
     <Compile Include="Domain\Contracts\Code\IParameter.cs" />
     <Compile Include="Domain\EnvDte\Code\EnvDteClassEvent.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\EnvDteCodeElementDiscoverer.cs" />
@@ -158,7 +158,7 @@
     <Compile Include="Domain\EnvDte\Code\EnvDteInterfaceMethod.cs" />
     <Compile Include="Domain\EnvDte\Code\EnvDteInterface.cs" />
     <Compile Include="Domain\EnvDte\Services\EnvDteInterfaceImplementationFinder.cs" />
-    <Compile Include="Domain\EnvDte\Services\EnvDteImplementationPresenter.cs" />
+    <Compile Include="Domain\ImplementationSelector.cs" />
     <Compile Include="Domain\EnvDte\Code\EnvDteCodeElement.cs" />
     <Compile Include="Domain\EnvDte\Code\EnvDteParameter.cs" />
     <Compile Include="Domain\Factory.cs" />

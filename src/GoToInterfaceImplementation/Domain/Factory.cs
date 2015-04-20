@@ -10,7 +10,7 @@ namespace GoToInterfaceImplementation.Domain
     {
         public abstract ICodeEditor CreateCodeEditor();
 
-        public abstract IImplementationPresenter CreateImplementationPresenter();
+        public abstract IImplementationSelector CreateImplementationSelector();
 
 
         private static Factory _current;

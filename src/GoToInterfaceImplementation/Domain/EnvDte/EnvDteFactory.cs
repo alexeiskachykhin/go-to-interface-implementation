@@ -14,9 +14,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
             return new EnvDteCodeEditor();
         }
 
-        public override IImplementationPresenter CreateImplementationPresenter()
+        public override IImplementationSelector CreateImplementationSelector()
         {
-            return new EnvDteImplementationPresenter();
+            return new ImplementationSelector();
         }
     }
 }

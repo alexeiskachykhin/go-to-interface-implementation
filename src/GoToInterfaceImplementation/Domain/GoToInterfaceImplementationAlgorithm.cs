@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using GoToInterfaceImplementation.Domain.EnvDte;
 using GoToInterfaceImplementation.Domain.Contracts;
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
@@ -11,25 +10,30 @@ namespace GoToInterfaceImplementation.Domain
 {
     public class GoToInterfaceImplementationAlgorithm : IAlgorithm
     {
-        public void Execute()
+        public async void Execute()
         {
             ICodeEditor codeEditor = Factory.Current.CreateCodeEditor();
 
-            IDeclarationOf<ICodeElement> selectedDeclaration = 
+            IDeclarationOf<ICodeElement> declaration = 
                 codeEditor.GetSelectedCodeElement() as IDeclarationOf<ICodeElement>;
 
-            if (selectedDeclaration == null)
+            if (declaration == null)
             {
                 return;
             }
 
-            IEnumerable<ICodeElement> selectedDeclarationImplementations =
-                selectedDeclaration.FindImplementations();
+            IEnumerable<ICodeElement> declarationImplementations =
+                declaration.FindImplementations();
 
-            IImplementationPresenter presenter =
-                Factory.Current.CreateImplementationPresenter();
+            IImplementationSelector implementationSelector =
+                Factory.Current.CreateImplementationSelector();
 
-            presenter.Present(selectedDeclarationImplementations);
+            ICodeElement declarationImplementation = await implementationSelector.SelectAsync(declarationImplementations);
+
+            if (declarationImplementation != null)
+            {
+                declarationImplementation.RevealInCodeEditor();
+            }
         }
     }
 }
