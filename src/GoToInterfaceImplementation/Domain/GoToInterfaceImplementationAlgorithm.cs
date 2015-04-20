@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using GoToInterfaceImplementation.Domain.Contracts;
 using GoToInterfaceImplementation.Domain.Contracts.Code;
@@ -10,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain
 {
     public class GoToInterfaceImplementationAlgorithm : IAlgorithm
     {
-        public async void Execute()
+        public async Task Execute()
         {
             ICodeEditor codeEditor = Factory.Current.CreateCodeEditor();
 

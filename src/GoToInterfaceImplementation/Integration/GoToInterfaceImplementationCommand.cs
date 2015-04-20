@@ -33,10 +33,10 @@ namespace GoToInterfaceImplementation.Integration
             menuCommandService.AddCommand(menuItem);
         }
 
-        private void Execute()
+        private async void Execute()
         {
             var algorithm = new GoToInterfaceImplementationAlgorithm();
-            algorithm.Execute();
+            await algorithm.Execute();
         }
     }
 }
