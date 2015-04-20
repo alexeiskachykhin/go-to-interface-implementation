@@ -9,6 +9,7 @@ using EnvDTE80;
 
 using GoToInterfaceImplementation.Integration;
 using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
@@ -25,40 +26,18 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public ICodeElement GetSelectedCodeElement()
         {
-            TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
-            TextPoint selectionPoint = selection.ActivePoint;
-
-            var elementTypes = new[] 
+            var elementDiscoverers = new EnvDteCodeElementDiscoverer[] 
             {
-                new { DomainType = typeof(EnvDteParameterOfInterfaceType), EnvDteType = typeof(CodeParameter), EnvDteKind = vsCMElement.vsCMElementParameter, Condition = (Predicate<CodeElement>)(x => true) },
-                new { DomainType = typeof(EnvDteInterfaceMethod), EnvDteType = typeof(CodeFunction), EnvDteKind = vsCMElement.vsCMElementFunction, Condition = (Predicate<CodeElement>)(x => true) },
-                new { DomainType = typeof(EnvDteInterfaceProperty), EnvDteType = typeof(CodeProperty2), EnvDteKind = vsCMElement.vsCMElementProperty, Condition = (Predicate<CodeElement>)(x => true) },
-                new { DomainType = typeof(EnvDteInterfaceEvent), EnvDteType = typeof(CodeEvent), EnvDteKind = vsCMElement.vsCMElementEvent, Condition = (Predicate<CodeElement>)(x => true) },
-                new { DomainType = typeof(EnvDteInterface), EnvDteType = typeof(CodeInterface), EnvDteKind = vsCMElement.vsCMElementInterface, Condition = (Predicate<CodeElement>)(x => true) }
+                new EnvDteParameterOfInterfaceTypeDiscoverer(_dte),
+                new EnvDteInterfaceMethodDiscoverer(_dte),
+                new EnvDteInterfacePropertyDiscoverer(_dte),
+                new EnvDteInterfaceEventDiscoverer(_dte),
+                new EnvDteInterfaceDiscoverer(_dte)
             };
 
-            IEnumerable<ICodeElement> possiblySelectedCodeElements = elementTypes.Select(x =>
-            {
-                try
-                {
-                    CodeElement codeElement =
-                        _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(selectionPoint, x.EnvDteKind);
-
-                    if (!x.Condition(codeElement))
-                    {
-                        return null;
-                    }
-
-                    ConstructorInfo constructor =
-                        x.DomainType.GetConstructor(new[] { typeof(ICodeEditor), x.EnvDteType });
-
-                    return (ICodeElement)constructor.Invoke(new object[] { this, codeElement });
-                }
-                catch (COMException)
-                {
-                    return null;
-                }
-            });
+            IEnumerable<ICodeElement> possiblySelectedCodeElements =
+                from discoverer in elementDiscoverers
+                select discoverer.Discover();
 
             ICodeElement selectedCodeElement = possiblySelectedCodeElements
                 .FirstOrDefault(e => e != null);
