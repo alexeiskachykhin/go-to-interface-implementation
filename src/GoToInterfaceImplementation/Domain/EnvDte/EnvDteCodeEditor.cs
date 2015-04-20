@@ -30,10 +30,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
             var elementTypes = new[] 
             {
-                new { DomainType = typeof(EnvDteInterfaceMethod), EnvDteType = typeof(CodeFunction), EnvDteKind = vsCMElement.vsCMElementFunction },
-                new { DomainType = typeof(EnvDteInterfaceProperty), EnvDteType = typeof(CodeProperty2), EnvDteKind = vsCMElement.vsCMElementProperty },
-                new { DomainType = typeof(EnvDteInterfaceEvent), EnvDteType = typeof(CodeEvent), EnvDteKind = vsCMElement.vsCMElementEvent },
-                new { DomainType = typeof(EnvDteInterface), EnvDteType = typeof(CodeInterface), EnvDteKind = vsCMElement.vsCMElementInterface }
+                new { DomainType = typeof(EnvDteInterfaceMethodParameter), EnvDteType = typeof(CodeParameter), EnvDteKind = vsCMElement.vsCMElementParameter, Condition = (Predicate<CodeElement>)(x => true) },
+                new { DomainType = typeof(EnvDteInterfaceMethod), EnvDteType = typeof(CodeFunction), EnvDteKind = vsCMElement.vsCMElementFunction, Condition = (Predicate<CodeElement>)(x => true) },
+                new { DomainType = typeof(EnvDteInterfaceProperty), EnvDteType = typeof(CodeProperty2), EnvDteKind = vsCMElement.vsCMElementProperty, Condition = (Predicate<CodeElement>)(x => true) },
+                new { DomainType = typeof(EnvDteInterfaceEvent), EnvDteType = typeof(CodeEvent), EnvDteKind = vsCMElement.vsCMElementEvent, Condition = (Predicate<CodeElement>)(x => true) },
+                new { DomainType = typeof(EnvDteInterface), EnvDteType = typeof(CodeInterface), EnvDteKind = vsCMElement.vsCMElementInterface, Condition = (Predicate<CodeElement>)(x => true) }
             };
 
             IEnumerable<ICodeElement> possiblySelectedCodeElements = elementTypes.Select(x =>
@@ -42,6 +43,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
                 {
                     CodeElement codeElement =
                         _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(selectionPoint, x.EnvDteKind);
+
+                    if (!x.Condition(codeElement))
+                    {
+                        return null;
+                    }
 
                     ConstructorInfo constructor =
                         x.DomainType.GetConstructor(new[] { typeof(ICodeEditor), x.EnvDteType });

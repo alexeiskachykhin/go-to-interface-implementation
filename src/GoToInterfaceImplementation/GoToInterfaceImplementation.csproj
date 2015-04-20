@@ -131,11 +131,14 @@
     <Compile Include="Domain\Contracts\IDefinitionOf.cs" />
     <Compile Include="Domain\Contracts\IDeclarationOf.cs" />
     <Compile Include="Domain\Contracts\IInterfaceEvent.cs" />
+    <Compile Include="Domain\Contracts\IInterfaceMethodParameter.cs" />
     <Compile Include="Domain\Contracts\IInterfaceProperty.cs" />
     <Compile Include="Domain\Contracts\IInterfaceMethod.cs" />
     <Compile Include="Domain\Contracts\IImplementationPresenter.cs" />
     <Compile Include="Domain\Contracts\IParameter.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClassEvent.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceMethodParameterImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\EnvDteInterfaceMethodParameter.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClassProperty.cs" />
     <Compile Include="Domain\EnvDte\EnvDteClassMethod.cs" />
     <Compile Include="Domain\EnvDte\EnvDteCodeEditor.cs" />
