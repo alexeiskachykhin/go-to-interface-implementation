@@ -4,9 +4,12 @@ using System.Linq;
 
 using EnvDTE;
 
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.Contracts.Services;
+using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
-namespace GoToInterfaceImplementation.Domain.EnvDte
+namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class EnvDteInterfaceMethod : EnvDteCodeElement<CodeFunction>, IInterfaceMethod
     {

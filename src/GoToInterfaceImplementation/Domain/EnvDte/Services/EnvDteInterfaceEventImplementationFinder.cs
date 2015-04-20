@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 
 using GoToInterfaceImplementation.Integration;
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+using GoToInterfaceImplementation.Domain.Contracts.Services;
 
-namespace GoToInterfaceImplementation.Domain.EnvDte
+namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
     public class EnvDteInterfaceEventImplementationFinder : IImplementationFinder<IInterfaceEvent, IClassEvent>
     {

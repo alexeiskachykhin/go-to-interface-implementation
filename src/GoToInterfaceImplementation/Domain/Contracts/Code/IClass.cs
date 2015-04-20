@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GoToInterfaceImplementation.Domain.Contracts
+namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
     public interface IClass : ICodeElement, IDefinitionOf<IInterface>
     {

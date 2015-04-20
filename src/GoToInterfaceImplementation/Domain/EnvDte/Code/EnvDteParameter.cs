@@ -4,9 +4,10 @@ using System.Linq;
 
 using EnvDTE;
 
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
-namespace GoToInterfaceImplementation.Domain.EnvDte
+namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class EnvDteParameter : EnvDteCodeElement<CodeParameter>, IParameter
     {

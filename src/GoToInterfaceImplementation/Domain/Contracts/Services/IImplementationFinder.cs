@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GoToInterfaceImplementation.Domain.Contracts
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+
+namespace GoToInterfaceImplementation.Domain.Contracts.Services
 {
     public interface IImplementationFinder<TDeclaration, TDefinition>
         where TDeclaration : IDeclarationOf<TDefinition>

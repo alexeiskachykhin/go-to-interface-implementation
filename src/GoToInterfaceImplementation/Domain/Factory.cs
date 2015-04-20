@@ -1,7 +1,8 @@
 ﻿using System;
 
 using GoToInterfaceImplementation.Domain.EnvDte;
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.Contracts.Services;
 
 namespace GoToInterfaceImplementation.Domain
 {

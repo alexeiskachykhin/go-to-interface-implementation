@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GoToInterfaceImplementation.Domain.Contracts
+namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
     public interface ICodeElement
     {

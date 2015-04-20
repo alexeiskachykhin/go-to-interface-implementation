@@ -5,7 +5,8 @@ using System.Linq;
 using EnvDTE;
 using EnvDTE80;
 
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.EnvDte.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {

@@ -6,7 +6,8 @@ using System.Runtime.InteropServices;
 
 using EnvDTE;
 
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
 using GoToInterfaceImplementation.Integration;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers

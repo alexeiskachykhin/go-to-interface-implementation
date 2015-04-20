@@ -3,9 +3,12 @@ using System.Collections.Generic;
 
 using EnvDTE;
 
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+using GoToInterfaceImplementation.Domain.Contracts.Services;
+using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
-namespace GoToInterfaceImplementation.Domain.EnvDte
+namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class EnvDteInterface : EnvDteCodeElement<CodeInterface>, IInterface
     {

@@ -8,10 +8,12 @@ using EnvDTE;
 using EnvDTE80;
 
 using GoToInterfaceImplementation.Integration;
-using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Domain.Contracts.Code;
+using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.EnvDte.Code;
 using GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers;
 
-namespace GoToInterfaceImplementation.Domain.EnvDte
+namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 {
     public class EnvDteCodeEditor : ICodeEditor
     {
