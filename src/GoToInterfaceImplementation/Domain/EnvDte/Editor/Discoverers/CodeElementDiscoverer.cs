@@ -13,7 +13,7 @@ using GoToInterfaceImplementation.Integration;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    internal abstract class EnvDteCodeElementDiscoverer
+    internal abstract class CodeElementDiscoverer
     {
         private readonly DTE2 _dte;
 
@@ -27,7 +27,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public vsCMElement EnvDteKind { get; private set; }
 
 
-        public EnvDteCodeElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
+        public CodeElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
         {
             _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
 

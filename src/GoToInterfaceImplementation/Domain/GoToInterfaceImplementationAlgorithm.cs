@@ -13,7 +13,7 @@ namespace GoToInterfaceImplementation.Domain
     {
         public async Task Execute()
         {
-            ICodeEditor codeEditor = Factory.Current.CreateCodeEditor();
+            ICodeEditor codeEditor = AbstractFactory.Current.CreateCodeEditor();
 
             IDeclarationOf<ICodeElement> declaration = 
                 codeEditor.GetSelectedCodeElement() as IDeclarationOf<ICodeElement>;
@@ -27,7 +27,7 @@ namespace GoToInterfaceImplementation.Domain
                 declaration.FindImplementations();
 
             IImplementationSelector implementationSelector =
-                Factory.Current.CreateImplementationSelector();
+                AbstractFactory.Current.CreateImplementationSelector();
 
             ICodeElement declarationImplementation = await implementationSelector.SelectAsync(declarationImplementations);
 

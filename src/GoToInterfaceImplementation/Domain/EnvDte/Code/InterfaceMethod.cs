@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 using EnvDTE;
-using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
@@ -12,11 +11,16 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteInterfaceProperty : EnvDteCodeElement<CodeProperty2>, IInterfaceProperty
+    public class InterfaceMethod : EnvDteCodeElement<CodeFunction>, IInterfaceMethod
     {
         public IInterface Interface
         {
-            get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Parent2); }
+            get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Parent); }
+        }
+
+        public string ReturnTypeFullName
+        {
+            get { return CodeElement.Type.AsFullName; }
         }
 
         public IEnumerable<IParameter> Parameters
@@ -25,23 +29,23 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IParameter> parameters =
                     from i in CodeElement.Parameters.OfType<CodeParameter>()
-                    select new EnvDteParameter(CodeEditor, i);
+                    select new Parameter(CodeEditor, i);
 
                 return parameters;
             }
         }
 
 
-        public EnvDteInterfaceProperty(ICodeEditor codeEditor, CodeProperty2 codeProperty)
-            : base(codeEditor, codeProperty)
+        public InterfaceMethod(ICodeEditor codeEditor, CodeFunction codeFunction)
+            : base(codeEditor, codeFunction)
         {
         }
 
 
-        public IEnumerable<IClassProperty> FindImplementations()
+        public IEnumerable<IClassMethod> FindImplementations()
         {
-            IImplementationFinder<IInterfaceProperty, IClassProperty> finder =
-                new EnvDteInterfacePropertyImplementationFinder();
+            IImplementationFinder<IInterfaceMethod, IClassMethod> finder = 
+                new InterfaceMethodImplementationFinder();
 
             return finder.Find(this);
         }

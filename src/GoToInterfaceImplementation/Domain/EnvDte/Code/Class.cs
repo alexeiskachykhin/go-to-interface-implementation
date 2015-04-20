@@ -10,7 +10,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteClass : EnvDteCodeElement<CodeClass>, IClass
+    public class Class : EnvDteCodeElement<CodeClass>, IClass
     {
         public IEnumerable<IClassMethod> Methods
         {
@@ -18,7 +18,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IClassMethod> classMethods =
                     from i in CodeElement.Children.OfType<CodeFunction>()
-                    select new EnvDteClassMethod(CodeEditor, i);
+                    select new ClassMethod(CodeEditor, i);
 
                 return classMethods;
             }
@@ -30,7 +30,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IClassProperty> classProperties =
                     from i in CodeElement.Children.OfType<CodeProperty2>()
-                    select new EnvDteClassProperty(CodeEditor, i);
+                    select new ClassProperty(CodeEditor, i);
 
                 return classProperties;
             }
@@ -42,7 +42,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IClassEvent> classEvents =
                     from i in CodeElement.Children.OfType<CodeEvent>()
-                    select new EnvDteClassEvent(CodeEditor, i);
+                    select new ClassEvent(CodeEditor, i);
 
                 return classEvents;
             }
@@ -54,14 +54,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IInterface> implementedInterfaces =
                     from i in CodeElement.ImplementedInterfaces.OfType<CodeInterface>()
-                    select new EnvDteInterface(CodeEditor, i);
+                    select new Interface(CodeEditor, i);
 
                 return implementedInterfaces;
             }
         }
 
 
-        public EnvDteClass(ICodeEditor codeEditor, CodeClass codeElement)
+        public Class(ICodeEditor codeEditor, CodeClass codeElement)
             : base(codeEditor, codeElement)
         {
         }

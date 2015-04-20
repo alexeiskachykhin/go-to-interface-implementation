@@ -15,12 +15,12 @@ using GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 {
-    public class EnvDteCodeEditor : ICodeEditor
+    public class CodeEditor : ICodeEditor
     {
         private readonly DTE2 _dte;
 
 
-        public EnvDteCodeEditor()
+        public CodeEditor()
         {
             _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
         }
@@ -28,13 +28,13 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
         public ICodeElement GetSelectedCodeElement()
         {
-            var elementDiscoverers = new EnvDteCodeElementDiscoverer[] 
+            var elementDiscoverers = new CodeElementDiscoverer[] 
             {
-                new EnvDteParameterOfInterfaceTypeDiscoverer(this),
-                new EnvDteInterfaceMethodDiscoverer(this),
-                new EnvDteInterfacePropertyDiscoverer(this),
-                new EnvDteInterfaceEventDiscoverer(this),
-                new EnvDteInterfaceDiscoverer(this)
+                new ParameterOfInterfaceTypeDiscoverer(this),
+                new InterfaceMethodDiscoverer(this),
+                new InterfacePropertyDiscoverer(this),
+                new InterfaceEventDiscoverer(this),
+                new InterfaceDiscoverer(this)
             };
 
             IEnumerable<ICodeElement> possiblySelectedCodeElements =
@@ -51,7 +51,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
         {
             IEnumerable<IClass> classes =
                 from c in GetClassesInSolution(_dte.Solution)
-                select new EnvDteClass(this, c);
+                select new Class(this, c);
 
             return classes;
         }

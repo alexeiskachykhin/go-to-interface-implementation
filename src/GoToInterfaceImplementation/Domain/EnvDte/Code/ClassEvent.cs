@@ -10,9 +10,9 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteClassEvent : EnvDteCodeElement<CodeEvent>, IClassEvent
+    public class ClassEvent : EnvDteCodeElement<CodeEvent>, IClassEvent
     {
-        public EnvDteClassEvent(ICodeEditor codeEditor, CodeEvent codeEvent)
+        public ClassEvent(ICodeEditor codeEditor, CodeEvent codeEvent)
             : base(codeEditor, codeEvent)
         {
         }

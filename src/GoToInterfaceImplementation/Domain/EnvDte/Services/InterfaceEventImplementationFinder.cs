@@ -8,7 +8,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
-    internal class EnvDteInterfaceEventImplementationFinder : IImplementationFinder<IInterfaceEvent, IClassEvent>
+    internal class InterfaceEventImplementationFinder : IImplementationFinder<IInterfaceEvent, IClassEvent>
     {
         public IEnumerable<IClassEvent> Find(IInterfaceEvent codeInterfaceEvent)
         {

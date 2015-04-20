@@ -9,22 +9,21 @@ using GoToInterfaceImplementation.Domain.EnvDte.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    internal class EnvDteParameterOfInterfaceTypeDiscoverer : EnvDteCodeElementDiscoverer
+    internal class InterfaceMethodDiscoverer : CodeElementDiscoverer
     {
-        public EnvDteParameterOfInterfaceTypeDiscoverer(ICodeEditor codeEditor)
+        public InterfaceMethodDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(EnvDteParameterOfInterfaceType), 
-            typeof(CodeParameter),
-            vsCMElement.vsCMElementParameter)
+            typeof(InterfaceMethod), 
+            typeof(CodeFunction),
+            vsCMElement.vsCMElementFunction)
         {
         }
 
 
         protected override bool IsApplicable(CodeElement codeElement)
         {
-            CodeParameter codeParameter = (CodeParameter)codeElement;
-            return (codeParameter.Type.CodeType is CodeInterface);
+            return true;
         }
     }
 }

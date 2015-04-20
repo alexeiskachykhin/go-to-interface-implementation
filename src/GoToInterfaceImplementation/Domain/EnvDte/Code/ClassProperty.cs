@@ -10,7 +10,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteClassProperty : EnvDteCodeElement<CodeProperty2>, IClassProperty
+    public class ClassProperty : EnvDteCodeElement<CodeProperty2>, IClassProperty
     {
         public IEnumerable<IParameter> Parameters
         {
@@ -18,14 +18,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IParameter> parameters =
                     from i in CodeElement.Parameters.OfType<CodeParameter>()
-                    select new EnvDteParameter(CodeEditor, i);
+                    select new Parameter(CodeEditor, i);
 
                 return parameters;
             }
         }
 
 
-        public EnvDteClassProperty(ICodeEditor codeEditor, CodeProperty2 codeProperty)
+        public ClassProperty(ICodeEditor codeEditor, CodeProperty2 codeProperty)
             : base(codeEditor, codeProperty)
         {
         }

@@ -10,15 +10,15 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteParameterOfInterfaceType : EnvDteParameter, IParameterOfInterfaceType
+    public class ParameterOfInterfaceType : Parameter, IParameterOfInterfaceType
     {
         public IInterface Interface
         {
-            get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Type.CodeType); }
+            get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Type.CodeType); }
         }
 
 
-        public EnvDteParameterOfInterfaceType(ICodeEditor codeEditor, CodeParameter codeParameter)
+        public ParameterOfInterfaceType(ICodeEditor codeEditor, CodeParameter codeParameter)
             : base(codeEditor, codeParameter)
         {
         }
@@ -27,7 +27,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         public IEnumerable<IClass> FindImplementations()
         {
             IImplementationFinder<IParameterOfInterfaceType, IClass> finder =
-                new EnvDteParameterOfInterfaceTypeImplementationFinder();
+                new ParameterOfInterfaceTypeImplementationFinder();
 
             return finder.Find(this);
         }

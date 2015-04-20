@@ -9,12 +9,12 @@ using GoToInterfaceImplementation.Domain.Contracts.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
-    internal class EnvDteInterfaceImplementationFinder : IImplementationFinder<IInterface, IClass>
+    internal class InterfaceImplementationFinder : IImplementationFinder<IInterface, IClass>
     {
         private readonly ICodeEditor _codeEditor;
 
 
-        public EnvDteInterfaceImplementationFinder(ICodeEditor codeEditor)
+        public InterfaceImplementationFinder(ICodeEditor codeEditor)
         {
             _codeEditor = codeEditor;
         }

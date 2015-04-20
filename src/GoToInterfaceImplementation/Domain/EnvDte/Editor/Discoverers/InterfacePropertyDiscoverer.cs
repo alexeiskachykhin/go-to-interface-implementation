@@ -10,14 +10,14 @@ using GoToInterfaceImplementation.Domain.EnvDte.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    internal class EnvDteInterfaceEventDiscoverer : EnvDteCodeElementDiscoverer
+    internal class InterfacePropertyDiscoverer : CodeElementDiscoverer
     {
-        public EnvDteInterfaceEventDiscoverer(ICodeEditor codeEditor)
+        public InterfacePropertyDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(EnvDteInterfaceEvent), 
-            typeof(CodeEvent),
-            vsCMElement.vsCMElementEvent)
+            typeof(InterfaceProperty),
+            typeof(CodeProperty2),
+            vsCMElement.vsCMElementProperty)
         {
         }
 

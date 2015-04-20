@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 
 using EnvDTE;
-using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
 using GoToInterfaceImplementation.Domain.EnvDte.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    internal class EnvDteInterfaceDiscoverer : EnvDteCodeElementDiscoverer
+    internal class ParameterOfInterfaceTypeDiscoverer : CodeElementDiscoverer
     {
-        public EnvDteInterfaceDiscoverer(ICodeEditor codeEditor)
+        public ParameterOfInterfaceTypeDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(EnvDteInterface),
-            typeof(CodeInterface),
-            vsCMElement.vsCMElementInterface)
+            typeof(ParameterOfInterfaceType), 
+            typeof(CodeParameter),
+            vsCMElement.vsCMElementParameter)
         {
         }
 
 
         protected override bool IsApplicable(CodeElement codeElement)
         {
-            return true;
+            CodeParameter codeParameter = (CodeParameter)codeElement;
+            return (codeParameter.Type.CodeType is CodeInterface);
         }
     }
 }

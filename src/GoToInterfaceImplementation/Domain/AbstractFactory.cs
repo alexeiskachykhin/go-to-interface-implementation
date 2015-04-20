@@ -6,23 +6,23 @@ using GoToInterfaceImplementation.Domain.Contracts.Services;
 
 namespace GoToInterfaceImplementation.Domain
 {
-    public abstract class Factory
+    public abstract class AbstractFactory
     {
         public abstract ICodeEditor CreateCodeEditor();
 
         public abstract IImplementationSelector CreateImplementationSelector();
 
 
-        private static Factory _current;
+        private static AbstractFactory _current;
 
 
-        public static Factory Current
+        public static AbstractFactory Current
         {
             get 
             {
                 if (_current == null)
                 {
-                    _current = new EnvDteFactory();
+                    _current = new Factory();
                 }
 
                 return _current;

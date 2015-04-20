@@ -9,7 +9,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteClassMethod : EnvDteCodeElement<CodeFunction>, IClassMethod
+    public class ClassMethod : EnvDteCodeElement<CodeFunction>, IClassMethod
     {
         public string ReturnTypeFullName
         {
@@ -22,14 +22,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 IEnumerable<IParameter> parameters =
                     from i in CodeElement.Parameters.OfType<CodeParameter>()
-                    select new EnvDteParameter(CodeEditor, i);
+                    select new Parameter(CodeEditor, i);
 
                 return parameters;
             }
         }
 
 
-        public EnvDteClassMethod(ICodeEditor codeEditor, CodeFunction codeFunction)
+        public ClassMethod(ICodeEditor codeEditor, CodeFunction codeFunction)
             : base(codeEditor, codeFunction)
         {
         }

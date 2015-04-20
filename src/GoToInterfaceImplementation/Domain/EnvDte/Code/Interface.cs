@@ -10,9 +10,9 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteInterface : EnvDteCodeElement<CodeInterface>, IInterface
+    public class Interface : EnvDteCodeElement<CodeInterface>, IInterface
     {
-        public EnvDteInterface(ICodeEditor codeEditor, CodeInterface codeInterface)
+        public Interface(ICodeEditor codeEditor, CodeInterface codeInterface)
             : base(codeEditor, codeInterface)
         {
         }
@@ -21,7 +21,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         public IEnumerable<IClass> FindImplementations()
         {
             IImplementationFinder<IInterface, IClass> finder = 
-                new EnvDteInterfaceImplementationFinder(CodeEditor);
+                new InterfaceImplementationFinder(CodeEditor);
 
             return finder.Find(this);
         }

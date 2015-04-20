@@ -7,11 +7,11 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteFactory : Factory
+    public class Factory : AbstractFactory
     {
         public override ICodeEditor CreateCodeEditor()
         {
-            return new EnvDteCodeEditor();
+            return new CodeEditor();
         }
 
         public override IImplementationSelector CreateImplementationSelector()

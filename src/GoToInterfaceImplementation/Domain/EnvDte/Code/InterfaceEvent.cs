@@ -12,15 +12,15 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class EnvDteInterfaceEvent : EnvDteCodeElement<CodeEvent>, IInterfaceEvent
+    public class InterfaceEvent : EnvDteCodeElement<CodeEvent>, IInterfaceEvent
     {
         public IInterface Interface
         {
-            get { return new EnvDteInterface(CodeEditor, (CodeInterface)CodeElement.Parent); }
+            get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Parent); }
         }
 
 
-        public EnvDteInterfaceEvent(ICodeEditor codeEditor, CodeEvent codeEvent)
+        public InterfaceEvent(ICodeEditor codeEditor, CodeEvent codeEvent)
             : base(codeEditor, codeEvent)
         {
         }
@@ -29,7 +29,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         public IEnumerable<IClassEvent> FindImplementations()
         {
             IImplementationFinder<IInterfaceEvent, IClassEvent> finder =
-                new EnvDteInterfaceEventImplementationFinder();
+                new InterfaceEventImplementationFinder();
 
             return finder.Find(this);
         }

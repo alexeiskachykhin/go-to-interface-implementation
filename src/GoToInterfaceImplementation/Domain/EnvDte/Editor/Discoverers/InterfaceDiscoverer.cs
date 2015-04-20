@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 
 using EnvDTE;
+using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
 using GoToInterfaceImplementation.Domain.EnvDte.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    internal class EnvDteInterfaceMethodDiscoverer : EnvDteCodeElementDiscoverer
+    internal class InterfaceDiscoverer : CodeElementDiscoverer
     {
-        public EnvDteInterfaceMethodDiscoverer(ICodeEditor codeEditor)
+        public InterfaceDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(EnvDteInterfaceMethod), 
-            typeof(CodeFunction),
-            vsCMElement.vsCMElementFunction)
+            typeof(Interface),
+            typeof(CodeInterface),
+            vsCMElement.vsCMElementInterface)
         {
         }
 
