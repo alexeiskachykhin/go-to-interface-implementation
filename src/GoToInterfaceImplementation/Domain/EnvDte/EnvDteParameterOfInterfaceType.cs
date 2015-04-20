@@ -7,7 +7,7 @@ using GoToInterfaceImplementation.Domain.Contracts;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte
 {
-    public class EnvDteInterfaceMethodParameter : EnvDteParameter, IInterfaceMethodParameter
+    public class EnvDteParameterOfInterfaceType : EnvDteParameter, IParameterOfInterfaceType
     {
         public IInterface Interface
         {
@@ -15,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         }
 
 
-        public EnvDteInterfaceMethodParameter(ICodeEditor codeEditor, CodeParameter codeParameter)
+        public EnvDteParameterOfInterfaceType(ICodeEditor codeEditor, CodeParameter codeParameter)
             : base(codeEditor, codeParameter)
         {
         }
@@ -23,8 +23,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
         public IEnumerable<IClass> FindImplementations()
         {
-            IImplementationFinder<IInterfaceMethodParameter, IClass> finder =
-                new EnvDteInterfaceMethodParameterImplementationFinder();
+            IImplementationFinder<IParameterOfInterfaceType, IClass> finder =
+                new EnvDteParameterOfInterfaceTypeImplementationFinder();
 
             return finder.Find(this);
         }

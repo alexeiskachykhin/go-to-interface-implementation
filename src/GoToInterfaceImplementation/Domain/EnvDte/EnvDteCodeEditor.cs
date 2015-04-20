@@ -30,7 +30,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
 
             var elementTypes = new[] 
             {
-                new { DomainType = typeof(EnvDteInterfaceMethodParameter), EnvDteType = typeof(CodeParameter), EnvDteKind = vsCMElement.vsCMElementParameter, Condition = (Predicate<CodeElement>)(x => true) },
+                new { DomainType = typeof(EnvDteParameterOfInterfaceType), EnvDteType = typeof(CodeParameter), EnvDteKind = vsCMElement.vsCMElementParameter, Condition = (Predicate<CodeElement>)(x => true) },
                 new { DomainType = typeof(EnvDteInterfaceMethod), EnvDteType = typeof(CodeFunction), EnvDteKind = vsCMElement.vsCMElementFunction, Condition = (Predicate<CodeElement>)(x => true) },
                 new { DomainType = typeof(EnvDteInterfaceProperty), EnvDteType = typeof(CodeProperty2), EnvDteKind = vsCMElement.vsCMElementProperty, Condition = (Predicate<CodeElement>)(x => true) },
                 new { DomainType = typeof(EnvDteInterfaceEvent), EnvDteType = typeof(CodeEvent), EnvDteKind = vsCMElement.vsCMElementEvent, Condition = (Predicate<CodeElement>)(x => true) },

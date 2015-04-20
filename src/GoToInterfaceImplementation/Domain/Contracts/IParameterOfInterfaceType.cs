@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoToInterfaceImplementation.Domain.Contracts
 {
-    public interface IInterfaceMethodParameter : IParameter, IDeclarationOf<IClass>
+    public interface IParameterOfInterfaceType : IParameter, IDeclarationOf<IClass>
     {
         IInterface Interface { get; }
     }
