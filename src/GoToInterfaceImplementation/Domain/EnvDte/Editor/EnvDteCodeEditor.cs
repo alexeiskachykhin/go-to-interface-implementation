@@ -28,11 +28,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte
         {
             var elementDiscoverers = new EnvDteCodeElementDiscoverer[] 
             {
-                new EnvDteParameterOfInterfaceTypeDiscoverer(_dte),
-                new EnvDteInterfaceMethodDiscoverer(_dte),
-                new EnvDteInterfacePropertyDiscoverer(_dte),
-                new EnvDteInterfaceEventDiscoverer(_dte),
-                new EnvDteInterfaceDiscoverer(_dte)
+                new EnvDteParameterOfInterfaceTypeDiscoverer(this),
+                new EnvDteInterfaceMethodDiscoverer(this),
+                new EnvDteInterfacePropertyDiscoverer(this),
+                new EnvDteInterfaceEventDiscoverer(this),
+                new EnvDteInterfaceDiscoverer(this)
             };
 
             IEnumerable<ICodeElement> possiblySelectedCodeElements =

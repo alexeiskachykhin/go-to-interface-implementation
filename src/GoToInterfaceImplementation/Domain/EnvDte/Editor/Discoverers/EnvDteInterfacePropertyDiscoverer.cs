@@ -11,9 +11,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
     public class EnvDteInterfacePropertyDiscoverer : EnvDteCodeElementDiscoverer
     {
-        public EnvDteInterfacePropertyDiscoverer(DTE dte)
+        public EnvDteInterfacePropertyDiscoverer(ICodeEditor codeEditor)
             : base(
-            dte,
+            codeEditor,
             typeof(EnvDteInterfaceProperty),
             typeof(CodeProperty2),
             vsCMElement.vsCMElementProperty)

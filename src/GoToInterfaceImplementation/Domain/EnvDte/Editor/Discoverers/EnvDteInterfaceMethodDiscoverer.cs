@@ -10,9 +10,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
     public class EnvDteInterfaceMethodDiscoverer : EnvDteCodeElementDiscoverer
     {
-        public EnvDteInterfaceMethodDiscoverer(DTE dte)
+        public EnvDteInterfaceMethodDiscoverer(ICodeEditor codeEditor)
             : base(
-            dte,
+            codeEditor,
             typeof(EnvDteInterfaceMethod), 
             typeof(CodeFunction),
             vsCMElement.vsCMElementFunction)

@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using EnvDTE;
 
 using GoToInterfaceImplementation.Domain.Contracts;
+using GoToInterfaceImplementation.Integration;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
@@ -15,6 +16,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         private readonly DTE _dte;
 
 
+        public ICodeEditor CodeEditor { get; private set; }
+
         public Type DomainType { get; private set; }
 
         public Type EnvDteType { get; private set; }
@@ -22,10 +25,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public vsCMElement EnvDteKind { get; private set; }
 
 
-        public EnvDteCodeElementDiscoverer(DTE dte, Type domainType, Type envDteType, vsCMElement envDteKind)
+        public EnvDteCodeElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
         {
-            _dte = dte;
+            _dte = PackageServiceLocator.Current.GetService<DTE>();
 
+            CodeEditor = codeEditor;
             DomainType = domainType;
             EnvDteType = envDteType;
             EnvDteKind = envDteKind;
@@ -50,7 +54,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
                 ConstructorInfo constructor =
                     DomainType.GetConstructor(new[] { typeof(ICodeEditor), EnvDteType });
 
-                return (ICodeElement)constructor.Invoke(new object[] { this, codeElement });
+                return (ICodeElement)constructor.Invoke(new object[] { CodeEditor, codeElement });
             }
             catch (COMException)
             {
