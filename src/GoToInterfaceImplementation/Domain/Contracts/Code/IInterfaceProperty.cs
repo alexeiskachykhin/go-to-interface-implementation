@@ -3,10 +3,8 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
-    public interface IInterfaceProperty : ICodeElement, IDeclarationOf<IClassProperty>
+    public interface IInterfaceProperty : IExecutableCodeElement, IDeclarationOf<IClassProperty>
     {
         IInterface Interface { get; }
-
-        IEnumerable<IParameter> Parameters { get; }
     }
 }

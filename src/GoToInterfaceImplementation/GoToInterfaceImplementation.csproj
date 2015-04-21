@@ -131,6 +131,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Contracts\Code\IExecutableCodeElement.cs" />
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
     <Compile Include="Domain\Contracts\Code\IClassEvent.cs" />
     <Compile Include="Domain\Contracts\Code\IClassProperty.cs" />

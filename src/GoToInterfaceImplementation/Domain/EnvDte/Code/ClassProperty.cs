@@ -12,6 +12,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class ClassProperty : EnvDteCodeElement<CodeProperty2>, IClassProperty
     {
+        public string ReturnTypeFullName
+        {
+            get { return CodeElement.Type.AsFullName; }
+        }
+        
         public IEnumerable<IParameter> Parameters
         {
             get 
@@ -36,12 +41,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             Signature classPropertySignature = new Signature()
             {
                 Name = Name,
+                ReturnTypeFullName = ReturnTypeFullName,
                 Parameters = Parameters
             };
 
             Signature interfacePropertySignature = new Signature()
             {
                 Name = declaration.Name,
+                ReturnTypeFullName = declaration.ReturnTypeFullName,
                 Parameters = declaration.Parameters
             };
 

@@ -6,6 +6,6 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
     public interface IParameter : ICodeElement
     {
-        string FullTypeName { get; }
+        string TypeFullName { get; }
     }
 }

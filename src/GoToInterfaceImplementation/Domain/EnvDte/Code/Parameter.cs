@@ -11,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class Parameter : EnvDteCodeElement<CodeParameter>, IParameter
     {
-        public string FullTypeName
+        public string TypeFullName
         {
             get { return CodeElement.Type.AsFullName; }
         }

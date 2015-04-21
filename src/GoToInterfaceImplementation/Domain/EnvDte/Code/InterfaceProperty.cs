@@ -19,6 +19,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Parent2); }
         }
 
+        public string ReturnTypeFullName
+        {
+            get { return CodeElement.Type.AsFullName; }
+        }
+
         public IEnumerable<IParameter> Parameters
         {
             get 

@@ -80,10 +80,19 @@ namespace GoToInterfaceImplementation.Domain
             bool isParametersCountEquals = (a.Parameters.Count() == b.Parameters.Count());
 
             bool isParametersNamesEquals = a.Parameters
-                .Zip(b.Parameters, (p1, p2) => p1.FullName == p2.FullName)
+                .Zip(b.Parameters, (p1, p2) => ParameterEquals(p1, p2))
                 .All(p => p);
 
             bool isEquals = (isParametersCountEquals && isParametersNamesEquals);
+
+            return isEquals;
+        }
+
+        private bool ParameterEquals(IParameter a, IParameter b)
+        {
+            bool isEquals =
+                (a.FullName == b.FullName) &&
+                (a.TypeFullName == b.TypeFullName);
 
             return isEquals;
         }
