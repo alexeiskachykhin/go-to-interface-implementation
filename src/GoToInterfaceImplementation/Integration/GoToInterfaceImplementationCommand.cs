@@ -36,7 +36,7 @@ namespace GoToInterfaceImplementation.Integration
         private async void Execute()
         {
             var algorithm = new GoToInterfaceImplementationAlgorithm();
-            await algorithm.Execute();
+            await algorithm.ExecuteAsync();
         }
     }
 }

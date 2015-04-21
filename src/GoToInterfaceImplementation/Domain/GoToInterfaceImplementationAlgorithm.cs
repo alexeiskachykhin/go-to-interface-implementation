@@ -11,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain
 {
     public class GoToInterfaceImplementationAlgorithm : IAlgorithm
     {
-        public async Task Execute()
+        public async Task ExecuteAsync()
         {
             ICodeEditor codeEditor = AbstractFactory.Current.CreateCodeEditor();
 
