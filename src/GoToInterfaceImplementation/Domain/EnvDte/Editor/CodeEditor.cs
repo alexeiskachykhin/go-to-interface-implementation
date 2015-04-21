@@ -59,19 +59,24 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
         private IEnumerable<CodeClass> GetClasses(CodeElements codeElements)
         {
-            foreach (CodeElement codeElement in codeElements)
+            Stack<CodeElement> unvisitedElements = 
+                new Stack<CodeElement>(codeElements.OfType<CodeElement>());
+
+            while (unvisitedElements.Count > 0)
             {
+                CodeElement codeElement = unvisitedElements.Pop();
+
                 if (codeElement.Kind == vsCMElement.vsCMElementClass)
                 {
                     yield return (CodeClass)codeElement;
                 }
                 else if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
                 {
-                    var namespaceElement = (CodeNamespace)codeElement;
+                    CodeNamespace namespaceElement = (CodeNamespace)codeElement;
 
-                    foreach (CodeClass codeClass in GetClasses(namespaceElement.Members))
+                    foreach (CodeElement innerCodeElement in namespaceElement.Members)
                     {
-                        yield return codeClass;
+                        unvisitedElements.Push(innerCodeElement);
                     }
                 }
             }
