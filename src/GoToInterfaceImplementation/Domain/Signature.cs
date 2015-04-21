@@ -6,7 +6,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Code;
 
 namespace GoToInterfaceImplementation.Domain
 {
-    public class Signature : IEquatable<Signature>
+    internal class Signature : IEquatable<Signature>
     {
         private IEnumerable<IParameter> _parameters;
 
