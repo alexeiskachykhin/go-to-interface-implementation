@@ -10,7 +10,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class ClassProperty : EnvDteCodeElement<CodeProperty2>, IClassProperty
+    public class ClassProperty : SemanticElement<CodeProperty2>, IClassProperty
     {
         public string ReturnTypeFullName
         {

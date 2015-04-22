@@ -12,7 +12,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class InterfaceEvent : EnvDteCodeElement<CodeEvent>, IInterfaceEvent
+    public class InterfaceEvent : SemanticElement<CodeEvent>, IInterfaceEvent
     {
         public IInterface Interface
         {

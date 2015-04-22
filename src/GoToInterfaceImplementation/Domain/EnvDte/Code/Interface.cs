@@ -10,7 +10,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class Interface : EnvDteCodeElement<CodeInterface>, IInterface
+    public class Interface : SemanticElement<CodeInterface>, IInterface
     {
         public Interface(ICodeEditor codeEditor, CodeInterface codeInterface)
             : base(codeEditor, codeInterface)

@@ -11,7 +11,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class InterfaceMethod : EnvDteCodeElement<CodeFunction>, IInterfaceMethod
+    public class InterfaceMethod : SemanticElement<CodeFunction>, IInterfaceMethod
     {
         public IInterface Interface
         {

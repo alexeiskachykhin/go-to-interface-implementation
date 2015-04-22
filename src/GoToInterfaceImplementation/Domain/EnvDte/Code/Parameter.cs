@@ -9,7 +9,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class Parameter : EnvDteCodeElement<CodeParameter>, IParameter
+    public class Parameter : SemanticElement<CodeParameter>, IParameter
     {
         public string TypeFullName
         {

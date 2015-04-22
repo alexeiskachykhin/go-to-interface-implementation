@@ -7,7 +7,7 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Editor
 {
     public interface ICodeEditor
     {
-        ICodeElement GetSelectedCodeElement();
+        ISemanticElement GetSelectedSemanticElement();
 
         IEnumerable<IClass> GetClassesInSolution();
     }

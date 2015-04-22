@@ -15,21 +15,21 @@ namespace GoToInterfaceImplementation.Domain
         {
             ICodeEditor codeEditor = AbstractFactory.Current.CreateCodeEditor();
 
-            IDeclarationOf<ICodeElement> declaration = 
-                codeEditor.GetSelectedCodeElement() as IDeclarationOf<ICodeElement>;
+            IDeclarationOf<ISemanticElement> declaration = 
+                codeEditor.GetSelectedSemanticElement() as IDeclarationOf<ISemanticElement>;
 
             if (declaration == null)
             {
                 return;
             }
 
-            IEnumerable<ICodeElement> declarationImplementations =
+            IEnumerable<ISemanticElement> declarationImplementations =
                 declaration.FindImplementations();
 
             IImplementationSelector implementationSelector =
                 AbstractFactory.Current.CreateImplementationSelector();
 
-            ICodeElement declarationImplementation = await implementationSelector.SelectAsync(declarationImplementations);
+            ISemanticElement declarationImplementation = await implementationSelector.SelectAsync(declarationImplementations);
 
             if (declarationImplementation != null)
             {

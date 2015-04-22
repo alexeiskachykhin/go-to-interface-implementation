@@ -13,7 +13,7 @@ using GoToInterfaceImplementation.Integration;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
-    internal abstract class CodeElementDiscoverer
+    internal abstract class SemanticElementDiscoverer
     {
         private readonly DTE2 _dte;
 
@@ -27,7 +27,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public vsCMElement EnvDteKind { get; private set; }
 
 
-        public CodeElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
+        public SemanticElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
         {
             _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
 
@@ -38,7 +38,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         }
 
 
-        public ICodeElement Discover()
+        public ISemanticElement Discover()
         {
             CodeElement codeElement = GetCodeElement();
 
@@ -51,12 +51,12 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         }
 
 
-        protected virtual ICodeElement CreateDomainModel(CodeElement codeElement)
+        protected virtual ISemanticElement CreateDomainModel(CodeElement codeElement)
         {
             ConstructorInfo constructor =
                     DomainType.GetConstructor(new[] { typeof(ICodeEditor), EnvDteType });
 
-            return (ICodeElement)constructor.Invoke(new object[] { CodeEditor, codeElement });
+            return (ISemanticElement)constructor.Invoke(new object[] { CodeEditor, codeElement });
         }
 
         protected virtual CodeElement GetCodeElement()

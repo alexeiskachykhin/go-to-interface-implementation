@@ -20,12 +20,12 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
         }
 
 
-        public IEnumerable<IClass> Find(IInterface codeInterface)
+        public IEnumerable<IClass> Find(IInterface interfaceElement)
         {
-            IEnumerable<IClass> codeClasses = _codeEditor.GetClassesInSolution();
+            IEnumerable<IClass> classes = _codeEditor.GetClassesInSolution();
 
-            IEnumerable<IClass> derivedCodeClasses = codeClasses.Where(
-                c => c.IsMatch(codeInterface));
+            IEnumerable<IClass> derivedCodeClasses = classes.Where(
+                c => c.IsMatch(interfaceElement));
 
             return derivedCodeClasses;
         }

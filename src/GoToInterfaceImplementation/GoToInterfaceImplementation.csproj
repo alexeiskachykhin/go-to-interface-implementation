@@ -131,7 +131,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Contracts\Code\IExecutableCodeElement.cs" />
+    <Compile Include="Domain\Contracts\Code\IExecutableSemanticElement.cs" />
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
     <Compile Include="Domain\Contracts\Code\IClassEvent.cs" />
     <Compile Include="Domain\Contracts\Code\IClassProperty.cs" />
@@ -145,7 +145,7 @@
     <Compile Include="Domain\Contracts\Services\IImplementationSelector.cs" />
     <Compile Include="Domain\Contracts\Code\IParameter.cs" />
     <Compile Include="Domain\EnvDte\Code\ClassEvent.cs" />
-    <Compile Include="Domain\EnvDte\Editor\Discoverers\CodeElementDiscoverer.cs" />
+    <Compile Include="Domain\EnvDte\Editor\Discoverers\SemanticElementDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceEventDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceMethodDiscoverer.cs" />
@@ -167,7 +167,7 @@
     <Compile Include="Domain\EnvDte\Code\Interface.cs" />
     <Compile Include="Domain\EnvDte\Services\InterfaceImplementationFinder.cs" />
     <Compile Include="Domain\ImplementationSelector.cs" />
-    <Compile Include="Domain\EnvDte\Code\CodeElement.cs" />
+    <Compile Include="Domain\EnvDte\Code\SemanticElement.cs" />
     <Compile Include="Domain\EnvDte\Code\Parameter.cs" />
     <Compile Include="Domain\AbstractFactory.cs" />
     <Compile Include="Domain\GoToInterfaceImplementationAlgorithm.cs" />
@@ -175,8 +175,8 @@
     <Compile Include="Domain\Contracts\Services\IImplementationFinder.cs" />
     <Compile Include="Domain\Contracts\Code\IClass.cs" />
     <Compile Include="Domain\Contracts\Code\IInterface.cs" />
-    <Compile Include="Domain\Contracts\Code\ICodeElement.cs" />
-    <Compile Include="Domain\Signature.cs" />
+    <Compile Include="Domain\Contracts\Code\ISemanticElement.cs" />
+    <Compile Include="Domain\EnvDte\Code\Signature.cs" />
     <Compile Include="Integration\GoToInterfaceImplementationCommand.cs" />
     <Compile Include="Integration\PackageIdentifiers.cs" />
     <Compile Include="Integration\GoToInterfaceImplementationPackage.cs" />

@@ -9,7 +9,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class ClassMethod : EnvDteCodeElement<CodeFunction>, IClassMethod
+    public class ClassMethod : SemanticElement<CodeFunction>, IClassMethod
     {
         public string ReturnTypeFullName
         {

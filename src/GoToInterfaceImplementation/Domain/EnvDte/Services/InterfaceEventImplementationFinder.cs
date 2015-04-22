@@ -10,11 +10,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
     internal class InterfaceEventImplementationFinder : IImplementationFinder<IInterfaceEvent, IClassEvent>
     {
-        public IEnumerable<IClassEvent> Find(IInterfaceEvent codeInterfaceEvent)
+        public IEnumerable<IClassEvent> Find(IInterfaceEvent interfaceEvent)
         {
-            IEnumerable<IClass> interfaceImplementations = codeInterfaceEvent.Interface.FindImplementations();
+            IEnumerable<IClass> interfaceImplementations = interfaceEvent.Interface.FindImplementations();
             IEnumerable<IClassEvent> events = interfaceImplementations.SelectMany(i => i.Events);
-            IEnumerable<IClassEvent> matchedEvents = events.Where(m => m.IsMatch(codeInterfaceEvent));
+            IEnumerable<IClassEvent> matchedEvents = events.Where(m => m.IsMatch(interfaceEvent));
 
             return matchedEvents;
         }

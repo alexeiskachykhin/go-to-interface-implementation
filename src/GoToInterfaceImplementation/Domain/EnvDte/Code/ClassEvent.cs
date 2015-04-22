@@ -10,7 +10,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class ClassEvent : EnvDteCodeElement<CodeEvent>, IClassEvent
+    public class ClassEvent : SemanticElement<CodeEvent>, IClassEvent
     {
         public ClassEvent(ICodeEditor codeEditor, CodeEvent codeEvent)
             : base(codeEditor, codeEvent)

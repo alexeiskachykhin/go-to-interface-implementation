@@ -8,6 +8,6 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Services
 {
     public interface IImplementationSelector
     {
-        Task<ICodeElement> SelectAsync(IEnumerable<ICodeElement> codeElementImplementations);
+        Task<ISemanticElement> SelectAsync(IEnumerable<ISemanticElement> semanticElementImplementations);
     }
 }

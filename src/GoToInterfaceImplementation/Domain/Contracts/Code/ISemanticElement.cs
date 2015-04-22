@@ -2,7 +2,7 @@
 
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
-    public interface ICodeElement
+    public interface ISemanticElement
     {
         string Name { get; }
 

@@ -9,7 +9,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public abstract class EnvDteCodeElement<T> : ICodeElement
+    public abstract class SemanticElement<T> : ISemanticElement
     {
         private ICodeEditor _codeEditor;
 
@@ -37,7 +37,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         }
 
 
-        public EnvDteCodeElement(ICodeEditor codeEditor, T codeElement)
+        public SemanticElement(ICodeEditor codeEditor, T codeElement)
         {
             _codeEditor = codeEditor;
             _codeElement = codeElement;

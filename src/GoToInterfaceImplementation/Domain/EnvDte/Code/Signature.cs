@@ -4,7 +4,7 @@ using System.Linq;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 
-namespace GoToInterfaceImplementation.Domain
+namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     internal class Signature : IEquatable<Signature>
     {

@@ -7,8 +7,8 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Services
 {
     public interface IImplementationFinder<TDeclaration, TDefinition>
         where TDeclaration : IDeclarationOf<TDefinition>
-        where TDefinition : ICodeElement
+        where TDefinition : ISemanticElement
     {
-        IEnumerable<TDefinition> Find(TDeclaration codeElement);
+        IEnumerable<TDefinition> Find(TDeclaration semanticElement);
     }
 }

@@ -10,17 +10,17 @@ using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class Class : EnvDteCodeElement<CodeClass>, IClass
+    public class Class : SemanticElement<CodeClass>, IClass
     {
         public IEnumerable<IClassMethod> Methods
         {
             get 
             {
-                IEnumerable<IClassMethod> classMethods =
+                IEnumerable<IClassMethod> methods =
                     from i in CodeElement.Children.OfType<CodeFunction>()
                     select new ClassMethod(CodeEditor, i);
 
-                return classMethods;
+                return methods;
             }
         }
 
@@ -28,11 +28,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         {
             get 
             {
-                IEnumerable<IClassProperty> classProperties =
+                IEnumerable<IClassProperty> properties =
                     from i in CodeElement.Children.OfType<CodeProperty2>()
                     select new ClassProperty(CodeEditor, i);
 
-                return classProperties;
+                return properties;
             }
         }
 
@@ -40,11 +40,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         {
             get 
             {
-                IEnumerable<IClassEvent> classEvents =
+                IEnumerable<IClassEvent> events =
                     from i in CodeElement.Children.OfType<CodeEvent>()
                     select new ClassEvent(CodeEditor, i);
 
-                return classEvents;
+                return events;
             }
         }
 

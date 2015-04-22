@@ -26,9 +26,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
         }
 
 
-        public ICodeElement GetSelectedCodeElement()
+        public ISemanticElement GetSelectedSemanticElement()
         {
-            var elementDiscoverers = new CodeElementDiscoverer[] 
+            var semanticElementDiscoverers = new SemanticElementDiscoverer[] 
             {
                 new ParameterOfInterfaceTypeDiscoverer(this),
                 new InterfaceMethodDiscoverer(this),
@@ -37,14 +37,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
                 new InterfaceDiscoverer(this)
             };
 
-            IEnumerable<ICodeElement> possiblySelectedCodeElements =
-                from discoverer in elementDiscoverers
+            IEnumerable<ISemanticElement> possiblySelectedSemanticElements =
+                from discoverer in semanticElementDiscoverers
                 select discoverer.Discover();
 
-            ICodeElement selectedCodeElement = possiblySelectedCodeElements
+            ISemanticElement selectedSemanticElement = possiblySelectedSemanticElements
                 .FirstOrDefault(e => e != null);
 
-            return selectedCodeElement;
+            return selectedSemanticElement;
         }
 
         public IEnumerable<IClass> GetClassesInSolution()
@@ -59,12 +59,12 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
         private IEnumerable<CodeClass> GetClasses(CodeElements codeElements)
         {
-            Stack<CodeElement> unvisitedElements = 
+            Stack<CodeElement> unvisitedCodeElements = 
                 new Stack<CodeElement>(codeElements.OfType<CodeElement>());
 
-            while (unvisitedElements.Count > 0)
+            while (unvisitedCodeElements.Count > 0)
             {
-                CodeElement codeElement = unvisitedElements.Pop();
+                CodeElement codeElement = unvisitedCodeElements.Pop();
 
                 if (codeElement.Kind == vsCMElement.vsCMElementClass)
                 {
@@ -76,7 +76,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
                     foreach (CodeElement innerCodeElement in namespaceElement.Members)
                     {
-                        unvisitedElements.Push(innerCodeElement);
+                        unvisitedCodeElements.Push(innerCodeElement);
                     }
                 }
             }

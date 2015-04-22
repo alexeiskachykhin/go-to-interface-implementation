@@ -12,7 +12,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class InterfaceProperty : EnvDteCodeElement<CodeProperty2>, IInterfaceProperty
+    public class InterfaceProperty : SemanticElement<CodeProperty2>, IInterfaceProperty
     {
         public IInterface Interface
         {

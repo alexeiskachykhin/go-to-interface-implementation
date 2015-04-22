@@ -10,9 +10,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
     internal class ParameterOfInterfaceTypeImplementationFinder : IImplementationFinder<IParameterOfInterfaceType, IClass>
     {
-        public IEnumerable<IClass> Find(IParameterOfInterfaceType codeParameter)
+        public IEnumerable<IClass> Find(IParameterOfInterfaceType interfaceParameter)
         {
-            IEnumerable<IClass> interfaceImplementations = codeParameter.Interface.FindImplementations();
+            IEnumerable<IClass> interfaceImplementations = interfaceParameter.Interface.FindImplementations();
 
             return interfaceImplementations;
         }

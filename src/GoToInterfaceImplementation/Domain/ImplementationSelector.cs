@@ -10,9 +10,9 @@ namespace GoToInterfaceImplementation.Domain
 {
     public class ImplementationSelector : IImplementationSelector
     {
-        public Task<ICodeElement> SelectAsync(IEnumerable<ICodeElement> codeElementImplementations)
+        public Task<ISemanticElement> SelectAsync(IEnumerable<ISemanticElement> semanticElementImplementations)
         {
-            ICodeElement firstImplementation = codeElementImplementations.FirstOrDefault();
+            ISemanticElement firstImplementation = semanticElementImplementations.FirstOrDefault();
 
             return Task.FromResult(firstImplementation);
         }
