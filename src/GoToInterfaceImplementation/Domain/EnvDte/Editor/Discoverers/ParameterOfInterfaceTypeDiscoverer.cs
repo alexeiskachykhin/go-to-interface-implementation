@@ -23,7 +23,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         protected override bool IsApplicable(CodeElement codeElement)
         {
-            CodeParameter codeParameter = (CodeParameter)codeElement;
+            CodeParameter codeParameter = codeElement as CodeParameter;
             return (codeParameter.Type.CodeType is CodeInterface);
         }
     }

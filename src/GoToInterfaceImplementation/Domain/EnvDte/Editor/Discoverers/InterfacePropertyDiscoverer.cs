@@ -24,7 +24,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         protected override bool IsApplicable(CodeElement codeElement)
         {
-            return true;
+            CodeProperty2 codeProperty = codeElement as CodeProperty2;
+            return (codeProperty.Parent2 is CodeInterface);
         }
     }
 }
