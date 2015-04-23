@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 
-namespace GoToInterfaceImplementation.Domain.Contracts.Services
+namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
-    public interface IImplementationFinder<TDeclaration, TDefinition>
+    internal interface IImplementationFinder<TDeclaration, TDefinition>
         where TDeclaration : IDeclarationOf<TDefinition>
         where TDefinition : ISemanticElement
     {

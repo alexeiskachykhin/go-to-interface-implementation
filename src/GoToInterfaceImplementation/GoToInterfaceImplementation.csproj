@@ -177,7 +177,7 @@
     <Compile Include="Domain\AbstractFactory.cs" />
     <Compile Include="Domain\GoToInterfaceImplementationAlgorithm.cs" />
     <Compile Include="Domain\Contracts\Editor\ICodeEditor.cs" />
-    <Compile Include="Domain\Contracts\Services\IImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\Services\IImplementationFinder.cs" />
     <Compile Include="Domain\Contracts\Code\IClass.cs" />
     <Compile Include="Domain\Contracts\Code\IInterface.cs" />
     <Compile Include="Domain\Contracts\Code\ISemanticElement.cs" />

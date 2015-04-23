@@ -8,8 +8,7 @@ using GoToInterfaceImplementation.Domain.Contracts.Code;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Services
 {
-    internal class VsCMAccessToAccessModifierConverter
-        : ITypeConverter<vsCMAccess, AccessModifier>
+    internal class VsCMAccessToAccessModifierConverter : ITypeConverter<vsCMAccess, AccessModifier>
     {
         public AccessModifier Convert(vsCMAccess source)
         {
