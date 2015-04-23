@@ -14,6 +14,17 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class InterfaceProperty : SemanticElement<CodeProperty2>, IInterfaceProperty
     {
+        public AccessModifier AccessModifier
+        {
+            get
+            {
+                ITypeConverter<vsCMAccess, AccessModifier> converter =
+                    new VsCMAccessToAccessModifierConverter();
+
+                return converter.Convert(CodeElement.Access);
+            }
+        }
+
         public IInterface Interface
         {
             get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Parent2); }

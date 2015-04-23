@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
-    public interface IExecutableSemanticElement : ISemanticElement
+    public interface IExecutable
     {
         string ReturnTypeFullName { get; }
 

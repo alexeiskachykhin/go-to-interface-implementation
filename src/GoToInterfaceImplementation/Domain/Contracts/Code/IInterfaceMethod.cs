@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
-    public interface IInterfaceMethod : IExecutableSemanticElement, IDeclarationOf<IClassMethod>
+    public interface IInterfaceMethod : 
+        ISemanticElement, 
+        IExecutable, 
+        IDeclarationOf<IClassMethod>, 
+        IMemberOf<IInterface>
     {
         IInterface Interface { get; }
     }

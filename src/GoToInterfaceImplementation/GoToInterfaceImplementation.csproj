@@ -131,7 +131,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Contracts\Code\IExecutableSemanticElement.cs" />
+    <Compile Include="Domain\Contracts\Code\AccessModifier.cs" />
+    <Compile Include="Domain\Contracts\Code\IExecutable.cs" />
+    <Compile Include="Domain\Contracts\Code\IMemberOf.cs" />
+    <Compile Include="Domain\Contracts\Code\IType.cs" />
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
     <Compile Include="Domain\Contracts\Code\IClassEvent.cs" />
     <Compile Include="Domain\Contracts\Code\IClassProperty.cs" />
@@ -151,6 +154,7 @@
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceMethodDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfacePropertyDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\ParameterOfInterfaceTypeDiscoverer.cs" />
+    <Compile Include="Domain\EnvDte\Services\ITypeConverter.cs" />
     <Compile Include="Domain\EnvDte\Services\ParameterOfInterfaceTypeImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Code\ParameterOfInterfaceType.cs" />
     <Compile Include="Domain\EnvDte\Code\ClassProperty.cs" />
@@ -166,6 +170,7 @@
     <Compile Include="Domain\EnvDte\Code\InterfaceMethod.cs" />
     <Compile Include="Domain\EnvDte\Code\Interface.cs" />
     <Compile Include="Domain\EnvDte\Services\InterfaceImplementationFinder.cs" />
+    <Compile Include="Domain\EnvDte\Services\VsCMAccessToAccessModifierConverter.cs" />
     <Compile Include="Domain\ImplementationSelector.cs" />
     <Compile Include="Domain\EnvDte\Code\SemanticElement.cs" />
     <Compile Include="Domain\EnvDte\Code\Parameter.cs" />

@@ -6,11 +6,23 @@ using EnvDTE;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class ClassMethod : SemanticElement<CodeFunction>, IClassMethod
     {
+        public AccessModifier AccessModifier
+        {
+            get
+            {
+                ITypeConverter<vsCMAccess, AccessModifier> converter =
+                    new VsCMAccessToAccessModifierConverter();
+
+                return converter.Convert(CodeElement.Access);
+            }
+        }
+
         public string ReturnTypeFullName
         {
             get { return CodeElement.Type.AsFullName; }
@@ -41,14 +53,16 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             {
                 Name = Name,
                 Parameters = Parameters,
-                ReturnTypeFullName = ReturnTypeFullName
+                ReturnTypeFullName = ReturnTypeFullName,
+                AccessModifier = AccessModifier
             };
 
             Signature interfaceMethodSignature = new Signature()
             {
                 Name = declaration.Name,
                 Parameters = declaration.Parameters,
-                ReturnTypeFullName = declaration.ReturnTypeFullName
+                ReturnTypeFullName = declaration.ReturnTypeFullName,
+                AccessModifier = declaration.AccessModifier
             };
 
             return classMethodSignature.Equals(interfaceMethodSignature);

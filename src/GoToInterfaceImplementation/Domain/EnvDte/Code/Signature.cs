@@ -17,6 +17,8 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public string ReturnTypeFullName { get; set; }
 
+        public AccessModifier AccessModifier { get; set; }
+
         public IEnumerable<IParameter> Parameters
         {
             get { return _parameters; }
@@ -38,6 +40,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             }
 
             bool isMatch =
+                AccessModifierEquals(this, other) &&
                 NamesEquals(this, other) &&
                 ParametersEquals(this, other);
 
@@ -71,6 +74,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
                 (a.Name == b.Name) &&
                 (a.FullName == b.FullName) &&
                 (a.ReturnTypeFullName == b.ReturnTypeFullName);
+
+            return isEquals;
+        }
+
+        private bool AccessModifierEquals(Signature a, Signature b)
+        {
+            bool isEquals =
+                (a.AccessModifier == b.AccessModifier);
 
             return isEquals;
         }
