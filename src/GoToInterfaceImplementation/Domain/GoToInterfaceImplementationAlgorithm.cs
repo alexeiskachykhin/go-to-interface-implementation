@@ -36,5 +36,15 @@ namespace GoToInterfaceImplementation.Domain
                 declarationImplementation.RevealInCodeEditor();
             }
         }
+
+        public bool CanExecute()
+        {
+            ICodeEditor codeEditor = AbstractFactory.Current.CreateCodeEditor();
+
+            IDeclarationOf<ISemanticElement> declaration =
+                codeEditor.GetSelectedSemanticElement() as IDeclarationOf<ISemanticElement>;
+
+            return (declaration != null);
+        }
     }
 }

@@ -29,14 +29,35 @@ namespace GoToInterfaceImplementation.Integration
                 PackageIdentifiers.GoToInterfaceImplementationCommandSet, 
                 (int)PackageIdentifiers.GoToInterfaceImplementationCommand);
 
-            MenuCommand menuItem = new MenuCommand((sender, e) => Execute(), commandId);
+            OleMenuCommand menuItem = new OleMenuCommand(OnCommandInvoke, commandId);
+            menuItem.BeforeQueryStatus += OnBeforeQueryStatus;
+
             menuCommandService.AddCommand(menuItem);
         }
+
+
+        private void OnCommandInvoke(object sender, EventArgs e)
+        {
+            Execute();
+        }
+
+        private void OnBeforeQueryStatus(object sender, EventArgs e)
+        {
+            OleMenuCommand menuItem = sender as OleMenuCommand;
+            menuItem.Visible = CanExecute();
+        }
+
 
         private async void Execute()
         {
             var algorithm = new GoToInterfaceImplementationAlgorithm();
             await algorithm.ExecuteAsync();
+        }
+
+        private bool CanExecute()
+        {
+            var algorithm = new GoToInterfaceImplementationAlgorithm();
+            return algorithm.CanExecute();
         }
     }
 }

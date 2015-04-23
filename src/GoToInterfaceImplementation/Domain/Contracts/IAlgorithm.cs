@@ -6,5 +6,7 @@ namespace GoToInterfaceImplementation.Domain.Contracts
     public interface IAlgorithm
     {
         Task ExecuteAsync();
+
+        bool CanExecute();
     }
 }

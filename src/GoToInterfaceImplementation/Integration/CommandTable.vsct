@@ -15,6 +15,7 @@
       <Button guid="guidGoToInterfaceImplementationCmdSet" id="cmdidGoToInterfaceImplementation" priority="0x0100" type="Button">
         <Parent guid="guidGoToInterfaceImplementationCmdSet" id="groupidGoToInterfaceImplementation" />
         <Icon guid="guidImages" id="bmpIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>Go To Interface Implementation</ButtonText>
         </Strings>

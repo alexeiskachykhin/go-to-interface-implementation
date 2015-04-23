@@ -16,6 +16,7 @@ namespace GoToInterfaceImplementation.Integration
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(PackageIdentifiers.GoToInterfaceImplementationPackageString)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string)]
     public sealed class GoToInterfaceImplementationPackage : Package
     {
         public GoToInterfaceImplementationPackage()
