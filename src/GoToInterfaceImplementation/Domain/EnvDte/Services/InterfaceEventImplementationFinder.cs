@@ -11,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
     {
         public IEnumerable<IClassEvent> Find(IInterfaceEvent interfaceEvent)
         {
-            IEnumerable<IClass> interfaceImplementations = interfaceEvent.Interface.FindImplementations();
+            IEnumerable<IClass> interfaceImplementations = interfaceEvent.ContainingType.FindImplementations();
             IEnumerable<IClassEvent> events = interfaceImplementations.SelectMany(i => i.Events);
             IEnumerable<IClassEvent> matchedEvents = events.Where(m => m.IsMatch(interfaceEvent));
 

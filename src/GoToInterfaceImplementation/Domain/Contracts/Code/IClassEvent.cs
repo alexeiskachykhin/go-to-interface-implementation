@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
-    public interface IClassEvent : ISemanticElement, IDefinitionOf<IInterfaceEvent>, IMemberOf<IInterface>
+    public interface IClassEvent : ISemanticElement, IDefinitionOf<IInterfaceEvent>, IMemberOf<IClass>
     {
     }
 }

@@ -136,8 +136,8 @@
     <Compile Include="Domain\Contracts\Code\IFieldOfInterfaceType.cs" />
     <Compile Include="Domain\Contracts\Code\IField.cs" />
     <Compile Include="Domain\Contracts\Code\IMemberOf.cs" />
-    <Compile Include="Domain\Contracts\Code\IPropertyOfInterfaceType.cs" />
     <Compile Include="Domain\Contracts\Code\IProperty.cs" />
+    <Compile Include="Domain\Contracts\Code\IPropertyOfInterfaceType.cs" />
     <Compile Include="Domain\Contracts\Code\IType.cs" />
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
     <Compile Include="Domain\Contracts\Code\IClassEvent.cs" />

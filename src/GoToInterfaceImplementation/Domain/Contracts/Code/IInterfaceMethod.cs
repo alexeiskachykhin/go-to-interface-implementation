@@ -9,6 +9,5 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Code
         IDeclarationOf<IClassMethod>, 
         IMemberOf<IInterface>
     {
-        IInterface Interface { get; }
     }
 }

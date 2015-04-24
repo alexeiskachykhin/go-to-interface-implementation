@@ -11,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
     {
         public IEnumerable<IClassProperty> Find(IInterfaceProperty interfaceProperty)
         {
-            IEnumerable<IClass> interfaceImplementations = interfaceProperty.Interface.FindImplementations();
+            IEnumerable<IClass> interfaceImplementations = interfaceProperty.ContainingType.FindImplementations();
             IEnumerable<IClassProperty> properties = interfaceImplementations.SelectMany(i => i.Properties);
             IEnumerable<IClassProperty> matchedProperties = properties.Where(m => m.IsMatch(interfaceProperty));
 

@@ -25,7 +25,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             }
         }
 
-        public IInterface Interface
+        public IInterface ContainingType
         {
             get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Parent2); }
         }

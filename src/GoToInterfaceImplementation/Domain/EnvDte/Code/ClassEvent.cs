@@ -24,6 +24,11 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             }
         }
 
+        public IClass ContainingType
+        {
+            get { return new Class(CodeEditor, (CodeClass)CodeElement.Parent); }
+        }
+
 
         public ClassEvent(ICodeEditor codeEditor, CodeEvent codeEvent)
             : base(codeEditor, codeEvent)

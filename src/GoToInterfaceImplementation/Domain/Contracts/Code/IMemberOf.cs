@@ -10,5 +10,7 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Code
         where T : IType
     {
         AccessModifier AccessModifier { get; }
+
+        T ContainingType { get; }
     }
 }
