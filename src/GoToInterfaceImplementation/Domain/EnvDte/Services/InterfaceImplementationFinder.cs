@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using GoToInterfaceImplementation.Integration;
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
 
