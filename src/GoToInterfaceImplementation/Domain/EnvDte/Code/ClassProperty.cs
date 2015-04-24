@@ -11,7 +11,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class ClassProperty : SemanticElement<CodeProperty2>, IClassProperty
+    public class ClassProperty : Property, IClassProperty
     {
         public AccessModifier AccessModifier
         {
@@ -21,23 +21,6 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
                     new VsCMAccessToAccessModifierConverter();
 
                 return converter.Convert(CodeElement.Access);
-            }
-        }
-
-        public string ReturnTypeFullName
-        {
-            get { return CodeElement.Type.AsFullName; }
-        }
-        
-        public IEnumerable<IParameter> Parameters
-        {
-            get 
-            {
-                IEnumerable<IParameter> parameters =
-                    from i in CodeElement.Parameters.OfType<CodeParameter>()
-                    select new Parameter(CodeEditor, i);
-
-                return parameters;
             }
         }
 

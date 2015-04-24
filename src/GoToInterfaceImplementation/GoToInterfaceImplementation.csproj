@@ -134,6 +134,8 @@
     <Compile Include="Domain\Contracts\Code\AccessModifier.cs" />
     <Compile Include="Domain\Contracts\Code\IExecutable.cs" />
     <Compile Include="Domain\Contracts\Code\IMemberOf.cs" />
+    <Compile Include="Domain\Contracts\Code\IPropertyOfInterfaceType.cs" />
+    <Compile Include="Domain\Contracts\Code\IProperty.cs" />
     <Compile Include="Domain\Contracts\Code\IType.cs" />
     <Compile Include="Domain\Contracts\IAlgorithm.cs" />
     <Compile Include="Domain\Contracts\Code\IClassEvent.cs" />
@@ -148,6 +150,9 @@
     <Compile Include="Domain\Contracts\Services\IImplementationSelector.cs" />
     <Compile Include="Domain\Contracts\Code\IParameter.cs" />
     <Compile Include="Domain\EnvDte\Code\ClassEvent.cs" />
+    <Compile Include="Domain\EnvDte\Code\Property.cs" />
+    <Compile Include="Domain\EnvDte\Code\PropertyOfInterfaceType.cs" />
+    <Compile Include="Domain\EnvDte\Editor\Discoverers\PropertyOfInterfaceTypeDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\SemanticElementDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceEventDiscoverer.cs" />
@@ -155,6 +160,7 @@
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfacePropertyDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\ParameterOfInterfaceTypeDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Services\ITypeConverter.cs" />
+    <Compile Include="Domain\EnvDte\Services\PropertyOfInterfaceTypeImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Services\ParameterOfInterfaceTypeImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Code\ParameterOfInterfaceType.cs" />
     <Compile Include="Domain\EnvDte\Code\ClassProperty.cs" />

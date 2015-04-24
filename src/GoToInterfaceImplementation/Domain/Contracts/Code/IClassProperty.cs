@@ -4,8 +4,7 @@ using System.Collections.Generic;
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
     public interface IClassProperty : 
-        ISemanticElement, 
-        IExecutable, 
+        IProperty,
         IDefinitionOf<IInterfaceProperty>, 
         IMemberOf<IClass>
     {

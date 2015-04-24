@@ -12,7 +12,7 @@ using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
-    public class InterfaceProperty : SemanticElement<CodeProperty2>, IInterfaceProperty
+    public class InterfaceProperty : Property, IInterfaceProperty
     {
         public AccessModifier AccessModifier
         {
@@ -28,23 +28,6 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
         public IInterface Interface
         {
             get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Parent2); }
-        }
-
-        public string ReturnTypeFullName
-        {
-            get { return CodeElement.Type.AsFullName; }
-        }
-
-        public IEnumerable<IParameter> Parameters
-        {
-            get 
-            {
-                IEnumerable<IParameter> parameters =
-                    from i in CodeElement.Parameters.OfType<CodeParameter>()
-                    select new Parameter(CodeEditor, i);
-
-                return parameters;
-            }
         }
 
 

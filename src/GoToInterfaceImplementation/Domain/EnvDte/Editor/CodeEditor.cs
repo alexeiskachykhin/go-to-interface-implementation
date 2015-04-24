@@ -31,6 +31,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
             var semanticElementDiscoverers = new SemanticElementDiscoverer[] 
             {
                 new ParameterOfInterfaceTypeDiscoverer(this),
+                new PropertyOfInterfaceTypeDiscoverer(this),
                 new InterfaceMethodDiscoverer(this),
                 new InterfacePropertyDiscoverer(this),
                 new InterfaceEventDiscoverer(this),
