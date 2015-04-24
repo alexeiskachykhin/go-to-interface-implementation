@@ -11,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
     {
         public IEnumerable<IClass> Find(IParameterOfInterfaceType interfaceParameter)
         {
-            IEnumerable<IClass> interfaceImplementations = interfaceParameter.Interface.FindImplementations();
+            IEnumerable<IClass> interfaceImplementations = interfaceParameter.Type.FindImplementations();
 
             return interfaceImplementations;
         }

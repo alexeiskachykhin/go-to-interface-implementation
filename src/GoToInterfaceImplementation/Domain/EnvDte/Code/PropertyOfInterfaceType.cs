@@ -13,7 +13,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class PropertyOfInterfaceType : Property, IPropertyOfInterfaceType
     {
-        public IInterface Interface
+        public IInterface ReturnType
         {
             get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Type.CodeType); }
         }

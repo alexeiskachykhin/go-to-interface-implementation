@@ -12,7 +12,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public class ParameterOfInterfaceType : Parameter, IParameterOfInterfaceType
     {
-        public IInterface Interface
+        public IInterface Type
         {
             get { return new Interface(CodeEditor, (CodeInterface)CodeElement.Type.CodeType); }
         }

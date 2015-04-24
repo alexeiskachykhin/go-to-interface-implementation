@@ -11,7 +11,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Services
     {
         public IEnumerable<IClass> Find(IPropertyOfInterfaceType interfaceProperty)
         {
-            IEnumerable<IClass> interfaceImplementations = interfaceProperty.Interface.FindImplementations();
+            IEnumerable<IClass> interfaceImplementations = interfaceProperty.ReturnType.FindImplementations();
 
             return interfaceImplementations;
         }

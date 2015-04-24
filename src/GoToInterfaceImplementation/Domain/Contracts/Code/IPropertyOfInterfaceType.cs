@@ -8,6 +8,6 @@ namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
     public interface IPropertyOfInterfaceType : IProperty, IDeclarationOf<IClass>
     {
-        IInterface Interface { get; }
+        IInterface ReturnType { get; }
     }
 }
