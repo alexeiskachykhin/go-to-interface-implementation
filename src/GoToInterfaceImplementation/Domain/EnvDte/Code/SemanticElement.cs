@@ -11,9 +11,9 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
     public abstract class SemanticElement<T> : ISemanticElement
     {
-        private ICodeEditor _codeEditor;
+        private readonly ICodeEditor _codeEditor;
 
-        private T _codeElement;
+        private readonly T _codeElement;
 
 
         public string Name
