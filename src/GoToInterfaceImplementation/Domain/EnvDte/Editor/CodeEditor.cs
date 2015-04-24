@@ -32,6 +32,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
             {
                 new ParameterOfInterfaceTypeDiscoverer(this),
                 new PropertyOfInterfaceTypeDiscoverer(this),
+                new FieldOfInterfaceTypeDiscoverer(this),
                 new InterfaceMethodDiscoverer(this),
                 new InterfacePropertyDiscoverer(this),
                 new InterfaceEventDiscoverer(this),

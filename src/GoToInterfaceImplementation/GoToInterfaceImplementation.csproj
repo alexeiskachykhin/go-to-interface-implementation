@@ -133,6 +133,8 @@
   <ItemGroup>
     <Compile Include="Domain\Contracts\Code\AccessModifier.cs" />
     <Compile Include="Domain\Contracts\Code\IExecutable.cs" />
+    <Compile Include="Domain\Contracts\Code\IFieldOfInterfaceType.cs" />
+    <Compile Include="Domain\Contracts\Code\IField.cs" />
     <Compile Include="Domain\Contracts\Code\IMemberOf.cs" />
     <Compile Include="Domain\Contracts\Code\IPropertyOfInterfaceType.cs" />
     <Compile Include="Domain\Contracts\Code\IProperty.cs" />
@@ -150,8 +152,11 @@
     <Compile Include="Domain\Contracts\Services\IImplementationSelector.cs" />
     <Compile Include="Domain\Contracts\Code\IParameter.cs" />
     <Compile Include="Domain\EnvDte\Code\ClassEvent.cs" />
+    <Compile Include="Domain\EnvDte\Code\FieldOfInterfaceType.cs" />
+    <Compile Include="Domain\EnvDte\Code\Field.cs" />
     <Compile Include="Domain\EnvDte\Code\Property.cs" />
     <Compile Include="Domain\EnvDte\Code\PropertyOfInterfaceType.cs" />
+    <Compile Include="Domain\EnvDte\Editor\Discoverers\FieldOfInterfaceTypeDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\PropertyOfInterfaceTypeDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\SemanticElementDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfaceDiscoverer.cs" />
