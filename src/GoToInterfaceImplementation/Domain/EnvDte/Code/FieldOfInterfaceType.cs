@@ -7,6 +7,7 @@ using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.EnvDte.Services;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 {
@@ -26,7 +27,10 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IClass> FindImplementations()
         {
-            throw new NotImplementedException();
+            IImplementationFinder<IFieldOfInterfaceType, IClass> finder = 
+                new FieldOfInterfaceTypeImplementationFinder();
+
+            return finder.Find(this);
         }
     }
 }

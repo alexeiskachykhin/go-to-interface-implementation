@@ -165,6 +165,7 @@
     <Compile Include="Domain\EnvDte\Editor\Discoverers\InterfacePropertyDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Editor\Discoverers\ParameterOfInterfaceTypeDiscoverer.cs" />
     <Compile Include="Domain\EnvDte\Services\ITypeConverter.cs" />
+    <Compile Include="Domain\EnvDte\Services\FieldOfInterfaceTypeImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Services\PropertyOfInterfaceTypeImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Services\ParameterOfInterfaceTypeImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Code\ParameterOfInterfaceType.cs" />
