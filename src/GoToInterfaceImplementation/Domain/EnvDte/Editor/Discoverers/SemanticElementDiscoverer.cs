@@ -61,17 +61,14 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         protected virtual CodeElement GetCodeElement()
         {
-            CodeElement codeElement = null;
+            TextPoint cursorTextPoint = GetCursorTextPoint();
 
-            TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
-            TextPoint selectionPoint = selection.ActivePoint;
+            CodeElement codeElement = GetCodeElementAtTextPoint(
+                _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElements,
+                cursorTextPoint,
+                EnvDteKind);
 
-            try
-            {
-                codeElement = _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElementFromPoint(
-                    selectionPoint, EnvDteKind);
-            }
-            catch (COMException)
+            if (codeElement == null)
             {
                 return null;
             }
@@ -85,5 +82,65 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         }
 
         protected abstract bool IsApplicable(CodeElement codeElement);
+
+
+        private CodeElement GetCodeElementAtTextPoint(CodeElements codeElements, TextPoint textPoint, vsCMElement kind)
+        {
+            if (codeElements == null)
+            {
+                return null;
+            }
+
+            CodeElement foundCodeElement = null;
+
+            foreach (CodeElement codeElement in codeElements)
+            {
+                if (codeElement.StartPoint.GreaterThan(textPoint) ||
+                    codeElement.EndPoint.LessThan(textPoint))
+                {
+                    continue;
+                }
+
+                if (codeElement.Kind == kind)
+                {
+                    foundCodeElement = codeElement;
+                }
+
+                CodeElements innerCodeElements = GetCodeElementMembers(codeElement);
+
+                foundCodeElement = GetCodeElementAtTextPoint(
+                    innerCodeElements, textPoint, kind) ?? foundCodeElement;
+            }
+
+            return foundCodeElement;
+        }
+
+        private CodeElements GetCodeElementMembers(CodeElement codeElement)
+        {
+            CodeElements codeElements = null;
+
+            if (codeElement is CodeNamespace)
+            {
+                codeElements = ((CodeNamespace)codeElement).Members;
+            }
+            else if (codeElement is CodeType)
+            {
+                codeElements = ((CodeType)codeElement).Members;
+            }
+            else if (codeElement is CodeFunction)
+            {
+                codeElements = ((CodeFunction)codeElement).Parameters;
+            }
+
+            return codeElements;
+        }
+
+        private TextPoint GetCursorTextPoint()
+        {
+            TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
+            TextPoint selectionPoint = selection.ActivePoint;
+
+            return selectionPoint;
+        }
     }
 }
