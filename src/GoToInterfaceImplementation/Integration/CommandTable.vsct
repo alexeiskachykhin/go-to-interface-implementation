@@ -10,7 +10,7 @@
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
       </Group>
     </Groups>
-    
+
     <Buttons>
       <Button guid="guidGoToInterfaceImplementationCmdSet" id="cmdidGoToInterfaceImplementation" priority="0x0100" type="Button">
         <Parent guid="guidGoToInterfaceImplementationCmdSet" id="groupidGoToInterfaceImplementation" />
@@ -21,7 +21,7 @@
         </Strings>
       </Button>
     </Buttons>
-   
+
     <Bitmaps>
       <Bitmap guid="guidImages" href="..\Resources\Images.png" usedList="bmpIcon"/>
     </Bitmaps>
@@ -33,12 +33,12 @@
 
   <Symbols>
     <GuidSymbol name="guidGoToInterfaceImplementationPkg" value="{5525ea2c-572b-4742-975b-8ba3262b48dc}" />
-    
+
     <GuidSymbol name="guidGoToInterfaceImplementationCmdSet" value="{80e60a93-5c13-4c22-a468-2997f09cd108}">
       <IDSymbol name="groupidGoToInterfaceImplementation" value="0x1020" />
       <IDSymbol name="cmdidGoToInterfaceImplementation" value="0x0100" />
     </GuidSymbol>
-    
+
     <GuidSymbol name="guidImages" value="{38669d3b-ab14-4a8e-81ec-d3f012013c84}" >
       <IDSymbol name="bmpIcon" value="1" />
     </GuidSymbol>
