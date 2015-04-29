@@ -26,7 +26,7 @@ namespace GoToInterfaceImplementation.Integration
             }
 
             CommandID commandId = new CommandID(
-                PackageIdentifiers.GoToInterfaceImplementationCommandSet, 
+                PackageIdentifiers.GoToInterfaceImplementationCommandSet,
                 (int)PackageIdentifiers.GoToInterfaceImplementationCommand);
 
             OleMenuCommand menuItem = new OleMenuCommand(OnCommandInvoke, commandId);

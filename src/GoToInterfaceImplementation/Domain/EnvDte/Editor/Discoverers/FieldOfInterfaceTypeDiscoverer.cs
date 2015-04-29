@@ -15,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public FieldOfInterfaceTypeDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(FieldOfInterfaceType), 
+            typeof(FieldOfInterfaceType),
             typeof(CodeVariable2),
             vsCMElement.vsCMElementVariable)
         {

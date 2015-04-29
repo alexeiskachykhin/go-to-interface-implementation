@@ -17,7 +17,7 @@ namespace GoToInterfaceImplementation.Integration
         }
 
 
-        public T GetService<T>() 
+        public T GetService<T>()
             where T : class
         {
             return GetService<T, T>();

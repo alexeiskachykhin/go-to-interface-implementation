@@ -32,7 +32,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IClass> FindImplementations()
         {
-            IImplementationFinder<IInterface, IClass> finder = 
+            IImplementationFinder<IInterface, IClass> finder =
                 new InterfaceImplementationFinder(CodeEditor);
 
             return finder.Find(this);

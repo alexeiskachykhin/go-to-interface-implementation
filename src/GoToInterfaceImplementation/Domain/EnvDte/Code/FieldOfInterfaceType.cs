@@ -27,7 +27,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IClass> FindImplementations()
         {
-            IImplementationFinder<IFieldOfInterfaceType, IClass> finder = 
+            IImplementationFinder<IFieldOfInterfaceType, IClass> finder =
                 new FieldOfInterfaceTypeImplementationFinder();
 
             return finder.Find(this);

@@ -18,7 +18,7 @@ namespace GoToInterfaceImplementation.Domain
 
         public static AbstractFactory Current
         {
-            get 
+            get
             {
                 if (_current == null)
                 {

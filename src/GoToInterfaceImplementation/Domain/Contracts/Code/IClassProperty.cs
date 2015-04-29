@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace GoToInterfaceImplementation.Domain.Contracts.Code
 {
-    public interface IClassProperty : 
+    public interface IClassProperty :
         IProperty,
-        IDefinitionOf<IInterfaceProperty>, 
+        IDefinitionOf<IInterfaceProperty>,
         IMemberOf<IClass>
     {
     }

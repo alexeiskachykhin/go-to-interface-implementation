@@ -15,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public InterfaceEventDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(InterfaceEvent), 
+            typeof(InterfaceEvent),
             typeof(CodeEvent),
             vsCMElement.vsCMElementEvent)
         {

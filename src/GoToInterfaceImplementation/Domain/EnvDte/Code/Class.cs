@@ -15,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
     {
         public AccessModifier AccessModifier
         {
-            get 
+            get
             {
                 ITypeConverter<vsCMAccess, AccessModifier> converter =
                     new VsCMAccessToAccessModifierConverter();
@@ -26,7 +26,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IClassMethod> Methods
         {
-            get 
+            get
             {
                 IEnumerable<IClassMethod> methods =
                     from i in CodeElement.Children.OfType<CodeFunction>()
@@ -38,7 +38,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IClassProperty> Properties
         {
-            get 
+            get
             {
                 IEnumerable<IClassProperty> properties =
                     from i in CodeElement.Children.OfType<CodeProperty2>()
@@ -50,7 +50,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IClassEvent> Events
         {
-            get 
+            get
             {
                 IEnumerable<IClassEvent> events =
                     from i in CodeElement.Children.OfType<CodeEvent>()
@@ -62,7 +62,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IInterface> ImplementedInterfaces
         {
-            get 
+            get
             {
                 IEnumerable<IInterface> implementedInterfaces =
                     from i in CodeElement.ImplementedInterfaces.OfType<CodeInterface>()

@@ -14,7 +14,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public InterfaceMethodDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(InterfaceMethod), 
+            typeof(InterfaceMethod),
             typeof(CodeFunction),
             vsCMElement.vsCMElementFunction)
         {

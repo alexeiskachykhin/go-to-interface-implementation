@@ -15,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public PropertyOfInterfaceTypeDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(PropertyOfInterfaceType), 
+            typeof(PropertyOfInterfaceType),
             typeof(CodeProperty2),
             vsCMElement.vsCMElementProperty)
         {

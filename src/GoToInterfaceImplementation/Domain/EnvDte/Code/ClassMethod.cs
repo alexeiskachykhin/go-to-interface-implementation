@@ -35,7 +35,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
 
         public IEnumerable<IParameter> Parameters
         {
-            get 
+            get
             {
                 IEnumerable<IParameter> parameters =
                     from i in CodeElement.Parameters.OfType<CodeParameter>()

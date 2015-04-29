@@ -15,7 +15,7 @@ namespace GoToInterfaceImplementation.Domain
         {
             ICodeEditor codeEditor = AbstractFactory.Current.CreateCodeEditor();
 
-            IDeclarationOf<ISemanticElement> declaration = 
+            IDeclarationOf<ISemanticElement> declaration =
                 codeEditor.GetSelectedSemanticElement() as IDeclarationOf<ISemanticElement>;
 
             if (declaration == null)

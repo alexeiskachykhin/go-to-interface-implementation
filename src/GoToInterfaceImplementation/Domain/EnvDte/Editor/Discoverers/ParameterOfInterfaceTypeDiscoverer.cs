@@ -14,7 +14,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         public ParameterOfInterfaceTypeDiscoverer(ICodeEditor codeEditor)
             : base(
             codeEditor,
-            typeof(ParameterOfInterfaceType), 
+            typeof(ParameterOfInterfaceType),
             typeof(CodeParameter),
             vsCMElement.vsCMElementParameter)
         {

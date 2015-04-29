@@ -28,7 +28,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
         public ISemanticElement GetSelectedSemanticElement()
         {
-            var semanticElementDiscoverers = new SemanticElementDiscoverer[] 
+            var semanticElementDiscoverers = new SemanticElementDiscoverer[]
             {
                 new ParameterOfInterfaceTypeDiscoverer(this),
                 new InterfaceMethodDiscoverer(this),
@@ -61,7 +61,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
         private IEnumerable<CodeClass> GetClasses(CodeElements codeElements)
         {
-            Stack<CodeElement> unvisitedCodeElements = 
+            Stack<CodeElement> unvisitedCodeElements =
                 new Stack<CodeElement>(codeElements.OfType<CodeElement>());
 
             while (unvisitedCodeElements.Count > 0)
