@@ -70,7 +70,10 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 
                 if (codeElement.Kind == vsCMElement.vsCMElementClass)
                 {
-                    yield return (CodeClass)codeElement;
+                    if (codeElement.InfoLocation == vsCMInfoLocation.vsCMInfoLocationProject)
+                    {
+                        yield return (CodeClass)codeElement;
+                    }
                 }
                 else if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
                 {
