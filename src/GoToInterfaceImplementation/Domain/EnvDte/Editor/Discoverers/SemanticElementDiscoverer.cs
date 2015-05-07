@@ -9,13 +9,14 @@ using EnvDTE80;
 
 using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
+using GoToInterfaceImplementation.Domain.EnvDte.Utilities;
 using GoToInterfaceImplementation.Integration;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 {
     internal abstract class SemanticElementDiscoverer
     {
-        private readonly DTE2 _dte;
+        private readonly CodeModelUtilities _codeModelUtilities;
 
 
         public ICodeEditor CodeEditor { get; private set; }
@@ -29,7 +30,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         public SemanticElementDiscoverer(ICodeEditor codeEditor, Type domainType, Type envDteType, vsCMElement envDteKind)
         {
-            _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
+            _codeModelUtilities = new CodeModelUtilities();
 
             CodeEditor = codeEditor;
             DomainType = domainType;
@@ -61,12 +62,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
 
         protected virtual CodeElement GetCodeElement()
         {
-            TextPoint cursorTextPoint = GetCursorTextPoint();
-
-            CodeElement codeElement = GetCodeElementAtTextPoint(
-                _dte.ActiveDocument.ProjectItem.FileCodeModel.CodeElements,
-                cursorTextPoint,
-                EnvDteKind);
+            CodeElement codeElement = _codeModelUtilities.GetCodeElementUnderCursor(EnvDteKind);
 
             if (codeElement == null)
             {
@@ -82,65 +78,5 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers
         }
 
         protected abstract bool IsApplicable(CodeElement codeElement);
-
-
-        private CodeElement GetCodeElementAtTextPoint(CodeElements codeElements, TextPoint textPoint, vsCMElement kind)
-        {
-            if (codeElements == null)
-            {
-                return null;
-            }
-
-            CodeElement foundCodeElement = null;
-
-            foreach (CodeElement codeElement in codeElements)
-            {
-                if (codeElement.StartPoint.GreaterThan(textPoint) ||
-                    codeElement.EndPoint.LessThan(textPoint))
-                {
-                    continue;
-                }
-
-                if (codeElement.Kind == kind)
-                {
-                    foundCodeElement = codeElement;
-                }
-
-                CodeElements innerCodeElements = GetCodeElementMembers(codeElement);
-
-                foundCodeElement = GetCodeElementAtTextPoint(
-                    innerCodeElements, textPoint, kind) ?? foundCodeElement;
-            }
-
-            return foundCodeElement;
-        }
-
-        private CodeElements GetCodeElementMembers(CodeElement codeElement)
-        {
-            CodeElements codeElements = null;
-
-            if (codeElement is CodeNamespace)
-            {
-                codeElements = ((CodeNamespace)codeElement).Members;
-            }
-            else if (codeElement is CodeType)
-            {
-                codeElements = ((CodeType)codeElement).Members;
-            }
-            else if (codeElement is CodeFunction)
-            {
-                codeElements = ((CodeFunction)codeElement).Parameters;
-            }
-
-            return codeElements;
-        }
-
-        private TextPoint GetCursorTextPoint()
-        {
-            TextSelection selection = (TextSelection)_dte.ActiveWindow.Selection;
-            TextPoint selectionPoint = selection.ActivePoint;
-
-            return selectionPoint;
-        }
     }
 }

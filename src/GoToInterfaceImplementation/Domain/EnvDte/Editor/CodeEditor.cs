@@ -12,17 +12,18 @@ using GoToInterfaceImplementation.Domain.Contracts.Code;
 using GoToInterfaceImplementation.Domain.Contracts.Editor;
 using GoToInterfaceImplementation.Domain.EnvDte.Code;
 using GoToInterfaceImplementation.Domain.EnvDte.Editor.Discoverers;
+using GoToInterfaceImplementation.Domain.EnvDte.Utilities;
 
 namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
 {
     public class CodeEditor : ICodeEditor
     {
-        private readonly DTE2 _dte;
+        private readonly CodeModelUtilities _codeModelUtilities;
 
 
         public CodeEditor()
         {
-            _dte = PackageServiceLocator.Current.GetService<DTE, DTE2>();
+            _codeModelUtilities = new CodeModelUtilities();
         }
 
 
@@ -52,60 +53,10 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Editor
         public IEnumerable<IClass> GetClassesInSolution()
         {
             IEnumerable<IClass> classes =
-                from c in GetClassesInSolution(_dte.Solution)
+                from c in _codeModelUtilities.GetClassesInActiveSolution()
                 select new Class(this, c);
 
             return classes;
-        }
-
-
-        private IEnumerable<CodeClass> GetClasses(CodeElements codeElements)
-        {
-            Stack<CodeElement> unvisitedCodeElements =
-                new Stack<CodeElement>(codeElements.OfType<CodeElement>());
-
-            while (unvisitedCodeElements.Count > 0)
-            {
-                CodeElement codeElement = unvisitedCodeElements.Pop();
-
-                if (codeElement.Kind == vsCMElement.vsCMElementClass)
-                {
-                    if (codeElement.InfoLocation == vsCMInfoLocation.vsCMInfoLocationProject)
-                    {
-                        yield return (CodeClass)codeElement;
-                    }
-                }
-                else if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
-                {
-                    CodeNamespace namespaceElement = (CodeNamespace)codeElement;
-
-                    foreach (CodeElement innerCodeElement in namespaceElement.Members)
-                    {
-                        unvisitedCodeElements.Push(innerCodeElement);
-                    }
-                }
-            }
-        }
-
-        private IEnumerable<CodeClass> GetClassesInProject(Project project)
-        {
-            if (project.CodeModel == null)
-            {
-                return Enumerable.Empty<CodeClass>();
-            }
-
-            return GetClasses(project.CodeModel.CodeElements);
-        }
-
-        private IEnumerable<CodeClass> GetClassesInSolution(Solution solution)
-        {
-            foreach (Project project in solution.Projects)
-            {
-                foreach (CodeClass codeClass in GetClassesInProject(project))
-                {
-                    yield return codeClass;
-                }
-            }
         }
     }
 }

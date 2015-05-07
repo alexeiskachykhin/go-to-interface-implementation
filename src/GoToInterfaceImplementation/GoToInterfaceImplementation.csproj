@@ -183,6 +183,7 @@
     <Compile Include="Domain\EnvDte\Code\Interface.cs" />
     <Compile Include="Domain\EnvDte\Services\InterfaceImplementationFinder.cs" />
     <Compile Include="Domain\EnvDte\Services\VsCMAccessToAccessModifierConverter.cs" />
+    <Compile Include="Domain\EnvDte\Utilities\CodeModelUtilities.cs" />
     <Compile Include="Domain\ImplementationSelector.cs" />
     <Compile Include="Domain\EnvDte\Code\SemanticElement.cs" />
     <Compile Include="Domain\EnvDte\Code\Parameter.cs" />
