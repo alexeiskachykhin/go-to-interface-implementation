@@ -29,7 +29,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             get
             {
                 IEnumerable<IClassMethod> methods =
-                    from i in CodeElement.Children.OfType<CodeFunction>()
+                    from i in CodeElement.Members.OfType<CodeFunction>()
                     select new ClassMethod(CodeEditor, i);
 
                 return methods;
@@ -41,7 +41,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             get
             {
                 IEnumerable<IClassProperty> properties =
-                    from i in CodeElement.Children.OfType<CodeProperty2>()
+                    from i in CodeElement.Members.OfType<CodeProperty2>()
                     select new ClassProperty(CodeEditor, i);
 
                 return properties;
@@ -53,7 +53,7 @@ namespace GoToInterfaceImplementation.Domain.EnvDte.Code
             get
             {
                 IEnumerable<IClassEvent> events =
-                    from i in CodeElement.Children.OfType<CodeEvent>()
+                    from i in CodeElement.Members.OfType<CodeEvent>()
                     select new ClassEvent(CodeEditor, i);
 
                 return events;
