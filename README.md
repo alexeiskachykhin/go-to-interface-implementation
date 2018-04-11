@@ -4,7 +4,7 @@ GoToInterfaceImplementation
 Visual Studio extension that allows to find implementations of particular interface. 
 
 ## Depreciation notice
-Visual Studio 2015 Update 1 native support this functionality https://www.visualstudio.com/en-us/news/vs2015-update1-vs.aspx. This project still exists as a reference implementation of Visual Studio extension.
+Visual Studio 2015 Update 1 natively supports this functionality https://www.visualstudio.com/en-us/news/vs2015-update1-vs.aspx. This project still exists as a reference implementation of Visual Studio extension.
 
 ##Getting started
 To contribute to this project, you'll need to do a few things first:
